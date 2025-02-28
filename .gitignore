@@ -1,0 +1,11 @@
+watcom/
+*.OBJ
+*.ERR
+*.O
+*.EXE
+*.LIB
+*.LNK
+.DS_Store
+*.LOG
+*.PCH
+*.BAK

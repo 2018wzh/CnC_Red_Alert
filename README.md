@@ -14,12 +14,23 @@ If you wish to rebuild the source code and tools successfully you will need to f
 - Human Machine Interface (HMI) “Sound Operating System” (SOS)
 
 
-## Compiling (Win32 Only)
+## Compiling
 
 The current state of the source code does not fully compile and will require some effort to restore it. If you wish to restore the original build environment, the following tools are required;
 
-- Watcom C/C++ (v10.6) for C/C++ source files
+- OpenWatcom C/C++ (v2.0) for C/C++ source files
 - Borland Turbo Assembler (TASM v4.0) for assembly files
+
+An environment to build is currently provided which works in dosbox-x. To build, place openwatcom in `watcom`, and `tasm.exe` in the bin folder, then:
+
+```
+	./launch.sh
+	[inside dosbox]
+	env.bat
+	wmake
+```
+
+Please note that to keep things simple, the current focus of this repository it to build the DOS version in the current version of OpenWatcom, which requires a few changes as the modern compiler is slightly more strict in places. Also the codebase seems to require a lot of manual tweaking to get the correct build state (such as the CD DOS version not building with the expansion pack changes).
 
 To use the compiled binaries, you must own the game. The C&C Ultimate Collection is available for purchase on [EA App](https://www.ea.com/en-gb/games/command-and-conquer/command-and-conquer-the-ultimate-collection/buy/pc) or [Steam](https://store.steampowered.com/bundle/39394/Command__Conquer_The_Ultimate_Collection/).
 

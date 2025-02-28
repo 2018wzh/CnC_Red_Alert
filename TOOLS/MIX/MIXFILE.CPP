@@ -102,7 +102,7 @@ long DataClass::TotalSize = 0;
 
 int main(int argc, char ** argv)
 {
-	class UsageError{};		// Parameter error or usage display desired.
+	class UsageError{;}		// Parameter error or usage display desired.
 	char *infile = 0;
 	char *outfile = 0;
 	int quiet = FALSE;

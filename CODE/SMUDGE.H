@@ -80,7 +80,7 @@ class SmudgeClass : public ObjectClass
 
 		virtual ObjectTypeClass const & Class_Of(void) const {return *Class;};
 		virtual bool Mark(MarkType);
-		virtual void Draw_It(int , int , WindowNumberType ) const {};
+		virtual void Draw_It(int , int , WindowNumberType ) const {;}
 
 		void Disown(CELL cell);
 

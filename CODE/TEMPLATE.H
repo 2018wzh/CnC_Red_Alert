@@ -78,7 +78,7 @@ class TemplateClass : public ObjectClass
 		**	Display and rendering support functionality. Supports imagery and how
 		**	object interacts with the map and thus indirectly controls rendering.
 		*/
-		virtual void Draw_It(int , int , WindowNumberType ) const {};
+		virtual void Draw_It(int , int , WindowNumberType ) const {;}
 		virtual bool Mark(MarkType mark);
 
 		/*

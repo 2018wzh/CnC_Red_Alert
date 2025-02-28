@@ -201,7 +201,7 @@ public:
 
 	inline	int	Get_First_CD_Drive(void);
 	inline	int	Get_Next_CD_Drive(void);
-	inline	int	Get_Number_Of_Drives(void) {return (CDCount);};
+	inline	int	Get_Number_Of_Drives(void) {return (CDCount);}
 
 private:
         VOID  GetCDDrives(VOID);

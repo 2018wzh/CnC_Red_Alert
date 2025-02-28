@@ -50,7 +50,7 @@ class CheckObject
 		CheckObject(char const * text = 0, bool checked=false) :
 			Text(text),
 			IsChecked(checked)
-		{};
+		{;}
 
 		char const * Text;
 		bool IsChecked;

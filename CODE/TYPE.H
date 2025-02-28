@@ -305,7 +305,7 @@ class ObjectTypeClass : public AbstractTypeClass
 		void const * Get_Radar_Data(void) const {return RadarIcon;};
 
 		#ifdef SCENARIO_EDITOR
-		virtual void Display(int, int, WindowNumberType, HousesType) const {};
+		virtual void Display(int, int, WindowNumberType, HousesType) const {;}
 		#endif
 
 		static void const * SelectShapes;

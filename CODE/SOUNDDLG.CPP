@@ -45,7 +45,7 @@ class MusicListClass : public ListClass
 	public:
 		MusicListClass(int id, int x, int y, int w, int h) :
 			ListClass(id, x, y, w, h, TPF_6PT_GRAD|TPF_NOSHADOW, MFCD::Retrieve("BTN-UP.SHP"), MFCD::Retrieve("BTN-DN.SHP"))
-		{};
+		{;}
 		virtual ~MusicListClass(void) {;}
 
 	protected:

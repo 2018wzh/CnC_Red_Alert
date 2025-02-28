@@ -309,14 +309,14 @@ class WinNullModemClass : public WinModemClass
 
 	public:
 
-		virtual	inline	void		Set_Modem_Dial_Type (int){};
+		virtual	inline	void		Set_Modem_Dial_Type (int){;}
 		virtual	inline	unsigned	Get_Modem_Status (void){return (0);};
-		virtual	inline	void		Set_Serial_DTR (BOOL){};
+		virtual	inline	void		Set_Serial_DTR (BOOL){;}
 		virtual	inline	int		Get_Modem_Result (int, char*, int){return(0);};
-		virtual	inline	void		Dial_Modem (char*){};
+		virtual	inline	void		Dial_Modem (char*){;}
 		virtual	inline	int		Send_Command_To_Modem (char*, char, char*, int, int, int){return (0);};
-		virtual	inline	void		Set_Echo_Function (void(*)(char)){};
-		virtual	inline	void		Set_Abort_Function (int(*)(void)){};
+		virtual	inline	void		Set_Echo_Function (void(*)(char)){;}
+		virtual	inline	void		Set_Abort_Function (int(*)(void)){;}
 
 };
 

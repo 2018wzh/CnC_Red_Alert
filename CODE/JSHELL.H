@@ -82,22 +82,22 @@ struct KeyboardClass
 		MouseQX(::MouseQX),
 		MouseQY(::MouseQY)
 	{}
-	KeyNumType Get(void) {return (IsLibrary ? (KeyNumType)Get_Key_Num() : (KeyNumType)getch());};
-	KeyNumType Check(void) {return (IsLibrary ? (KeyNumType)Check_Key_Num() : (KeyNumType)kbhit());};
-	KeyASCIIType To_ASCII(KeyNumType key) {return((KeyASCIIType)KN_To_KA(key));};
-	void Clear(void) {if (IsLibrary) Clear_KeyBuffer();};
-	int Down(KeyNumType key) {return(Key_Down(key));};
+	KeyNumType Get(void) {return (IsLibrary ? (KeyNumType)Get_Key_Num() : (KeyNumType)getch());}
+	KeyNumType Check(void) {return (IsLibrary ? (KeyNumType)Check_Key_Num() : (KeyNumType)kbhit());}
+	KeyASCIIType To_ASCII(KeyNumType key) {return((KeyASCIIType)KN_To_KA(key));}
+	void Clear(void) {if (IsLibrary) Clear_KeyBuffer();}
+	int Down(KeyNumType key) {return(Key_Down(key));}
 #else
 	KeyboardClass() : IsLibrary(true) {}
-	KeyNumType Get(void) {return ((KeyNumType)WWKeyboardClass::Get());};
-	KeyNumType Check(void) {return ((KeyNumType)WWKeyboardClass::Check());};
-	KeyASCIIType To_ASCII(KeyNumType key) {return((KeyASCIIType)WWKeyboardClass::To_ASCII(key));};
-	void Clear(void) {WWKeyboardClass::Clear();};
-	int Down(KeyNumType key) {return(WWKeyboardClass::Down(key));};
+	KeyNumType Get(void) {return ((KeyNumType)WWKeyboardClass::Get());}
+	KeyNumType Check(void) {return ((KeyNumType)WWKeyboardClass::Check());}
+	KeyASCIIType To_ASCII(KeyNumType key) {return((KeyASCIIType)WWKeyboardClass::To_ASCII(key));}
+	void Clear(void) {WWKeyboardClass::Clear();}
+	int Down(KeyNumType key) {return(WWKeyboardClass::Down(key));}
 #endif
 
-	int Mouse_X(void) {return(Get_Mouse_X());};
-	int Mouse_Y(void) {return(Get_Mouse_Y());};
+	int Mouse_X(void) {return(Get_Mouse_X());}
+	int Mouse_Y(void) {return(Get_Mouse_Y());}
 };
 
 
@@ -178,7 +178,7 @@ T Bound(T original, T minval, T maxval)
 	if (original < minval) return(minval);
 	if (original > maxval) return(maxval);
 	return(original);
-};
+}
 int Bound(signed int, signed int, signed int);
 unsigned Bound(unsigned, unsigned, unsigned);
 long Bound(long, long, long);
@@ -337,8 +337,8 @@ extern long Frame;
 class FrameTimerClass
 {
 	public:
-		long operator () (void) const {return(Frame);};
-		operator long (void) const {return(Frame);};
+		long operator () (void) const {return(Frame);}
+		operator long (void) const {return(Frame);}
 };
 
 
@@ -360,11 +360,11 @@ class SystemTimerClass
 {
 	public:
 		#ifdef WIN32
-			long operator () (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_System_Tick_Count());};
-			operator long (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_System_Tick_Count());};
+			long operator () (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_System_Tick_Count());}
+			operator long (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_System_Tick_Count());}
 		#else
-			long operator () (void) const {return(Get_System_Tick_Count());};
-			operator long (void) const {return(Get_System_Tick_Count());};
+			long operator () (void) const {return(Get_System_Tick_Count());}
+			operator long (void) const {return(Get_System_Tick_Count());}
 		#endif
 };
 #endif

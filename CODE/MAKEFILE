@@ -62,8 +62,8 @@ LIB=..\watcom\binnt\wlib
 WWFLAT=..\wwflat32
 WWOBJ=obj\dos
 LINKFILE=conquer.lnk
-CC=..\watcom\binnt\wpp386
-LIB=..\watcom\binnt\wlib
+CC=..\watcom\binw\wpp386
+LIB=..\watcom\binw\wlib
 !endif
 
 #---------------------------------------------------------------------------
@@ -108,6 +108,7 @@ CC_CFG += /DGF_WATCOM_S                 # Must be defined for Greenleaf with /3s
 CC_CFG += /bt=DOS
 !endif
 
+CC_CFG += /DTRUE_FALSE_DEFINED=1  /D__STDC_VERSION__=199901L
 CC_CFG += /i=..\gcl510\H                # Includes Greenleaf headers.
 CC_CFG += /of+                          # Generate traceable stack frames.
 CC_CFG += /zp1                          # Pack structures on byte boundary.
@@ -115,10 +116,10 @@ CC_CFG += /s                            # Remove stack check calls.
 CC_CFG += /j                            # char is now signed.
 CC_CFG += /fh=$(WWOBJ)\conquer.pch      # Use precompiled headers.
 CC_CFG += /fhq
-CC_CFG += /we                           # Treat all warnings as errors.
-CC_CFG += /w8                           # Most warnings enabled.
+CC_CFG += /w3                           # Most warnings enabled.
 CC_CFG += /ri                           # char and shorts are returned as int.
 CC_CFG += /zq                           # Operate quietly.
+CC_CFG += /ze
 
 ASM_CFG = /i$(WWFLAT)\INCLUDE           # Include directory.
 ASM_CFG += /zd                          # Debugging information line numbers.
@@ -145,6 +146,7 @@ ASM_CFG += /ml                          # Case sensitivity on code.
 
 .cpp.obj: .AUTODEPEND
 	echo Compiling $<
+	echo $(CC) $(CC_CFG) -fo$(WWOBJ)\$^. $<
 	*$(CC) $(CC_CFG) -fo$(WWOBJ)\$^. $<
 
 .asm.obj:

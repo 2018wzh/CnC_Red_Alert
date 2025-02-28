@@ -145,6 +145,8 @@ inline VOID *cdecl Open_Animation(BYTE *file_name, WSAOpenType user_flags, UBYTE
  * HISTORY:                                                                *
  *   05/24/1994 SKB : Created.                                             *
  *=========================================================================*/
+#pragma disable_message(1) 
+
 inline VOID *cdecl Open_Animation(BYTE *file_name, BufferClass& buffer, WSAOpenType user_flags,  UBYTE *palette=NULL) 
 {
 	return (Open_Animation(file_name, (BYTE *)buffer.Get_Buffer(), buffer.Get_Size(), user_flags, palette));

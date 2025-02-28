@@ -17,7 +17,7 @@
 */
 
 
-#if 0
+#ifndef WOL_DEBUG
 
 #define debugprogress
 #define _ASSERTE( x )

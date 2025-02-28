@@ -39,7 +39,7 @@
 #define WATCOM_H
 
 // Turn all warnings into errors.
-#pragma warning * 0
+//#pragma warning * 0
 
 // Disables warning when "sizeof" is used on an object with virtual functions.
 #pragma warning 549 9
@@ -48,7 +48,7 @@
 #pragma warning 389 9
 
 // Allow constructing a temporary to be used as a parameter.
-#pragma warning 604 9
+//#pragma warning 604 9
 
 // Disable the construct resolved as an expression warning.
 #pragma warning 595 9
@@ -77,6 +77,9 @@
 // Turns off unreferenced function parameter warning.
 //#pragma off(unreferenced)
 
+// mango - ignore undefined inline functions
+//#pragma warning 043 1 
+
 
 // Fix deficiency in Watcom so that true/false will be defined.
 #ifndef __BORLANDC__
@@ -86,5 +89,19 @@ enum {false=0,true=1};
 typedef int bool;
 #endif
 #endif
+
+// mango - needed in some places; need to tidy up
+#ifndef VOID
+typedef void VOID;
+#endif
+
+typedef  int            BOOL;
+typedef  unsigned int   UINT;
+typedef  char  BYTE;
+typedef  unsigned char  UBYTE;
+typedef  signed short       WORD;
+typedef  unsigned short      UWORD;
+typedef  signed long       LONG;
+typedef  unsigned long      ULONG;
 
 #endif

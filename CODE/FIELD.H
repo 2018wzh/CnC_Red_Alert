@@ -61,7 +61,7 @@ class FieldClass {
 		// Define constructors to be able to create all the different kinds
 		// of fields.
 		//
-		FieldClass(void) {};
+		FieldClass(void) {;}
 		FieldClass(char *id, char data);
 		FieldClass(char *id, unsigned char data);
 		FieldClass(char *id, short data);

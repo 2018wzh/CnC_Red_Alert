@@ -104,8 +104,8 @@ struct TDEventClass {
 	*/
 	CDTimerClass<FrameTimerClass> Timer;
 
-	TDEventClass(void) : IsTripped(false), Timer(0) {};
-	TDEventClass(NoInitClass const & x) : Timer(x) {};
+	TDEventClass(void) : IsTripped(false), Timer(0) {;}
+	TDEventClass(NoInitClass const & x) : Timer(x) {;}
 };
 
 
@@ -140,7 +140,7 @@ struct TEventClass {
 
 	TEventClass(void) : Event(TEVENT_NONE) {Data.Value = 0;};
 	TEventClass(TEventType event) : Event(event) {Data.Value = 0;};
-	TEventClass(NoInitClass const & x) : Team(x) {};
+	TEventClass(NoInitClass const & x) : Team(x) {;}
 
 	void Code_Pointers(void);
 	void Decode_Pointers(void);

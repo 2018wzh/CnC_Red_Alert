@@ -42,7 +42,7 @@
 class RegionClass {
 	public:
 		RegionClass(void) {Threat = 0;};
-		~RegionClass(void) {};
+		~RegionClass(void) {;}
 		int operator != (RegionClass const & region) {return memcmp(this, &region, sizeof(RegionClass));};
 		int operator == (RegionClass const & region) {return !memcmp(this, &region, sizeof(RegionClass));};
 		int operator > (RegionClass const & region) {return memcmp(this, &region, sizeof(RegionClass)) > 0;};

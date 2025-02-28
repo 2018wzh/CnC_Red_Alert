@@ -107,7 +107,7 @@ class InfantryClass : public FootClass
 		static void * operator new(size_t , void * ptr) {return(ptr);};
 		static void operator delete(void *ptr);
 		InfantryClass(InfantryType classid, HousesType house);
-		InfantryClass(NoInitClass const & x) : FootClass(x), Class(x), Comment(x) {};
+		InfantryClass(NoInitClass const & x) : FootClass(x), Class(x), Comment(x) {;}
 		virtual ~InfantryClass(void);
 		operator InfantryType(void) const {return Class->Type;};
 

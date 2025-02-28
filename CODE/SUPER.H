@@ -42,8 +42,8 @@
 
 class SuperClass {
 	public:
-		SuperClass(NoInitClass const & x) : Control(x) {};
-		SuperClass(void) : Control(NoInitClass()) {};
+		SuperClass(NoInitClass const & x) : Control(x) {;}
+		SuperClass(void) : Control(NoInitClass()) {;}
 		SuperClass(int recharge, bool powered, VoxType charging=VOX_NONE, VoxType ready=VOX_NONE, VoxType impatient=VOX_NONE, VoxType suspend=VOX_NONE);
 
 		bool Suspend(bool on);

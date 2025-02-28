@@ -680,7 +680,7 @@ bool Spawn_WChat(bool can_launch)
 		return (true);
 	}else{
 		ShowWindow (MainWindow, SW_RESTORE);
-		while ( Keyboard->Check() ) {};
+		while ( Keyboard->Check() ) {;}
 		return (false);
 	}
 }

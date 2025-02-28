@@ -1083,7 +1083,7 @@ bool Select_Game(bool fade)
 
 										WWDebugString ("RA95 - Discarding a packet.\n");
 										ptimer.Set (30, true);
-										while (ptimer.Time()) {};
+										while (ptimer.Time()) {;}
 										WWDebugString ("RA95 - Ready to check for more packets.\n");
 
 									}

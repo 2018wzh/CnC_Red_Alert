@@ -69,8 +69,8 @@ class MissionClass : public ObjectClass
 		**	Constructors, Destructors, and overloaded operators.
 		*/
 		MissionClass(RTTIType rtti, int id);
-		MissionClass(NoInitClass const & x) : ObjectClass(x), Timer(x) {};
-		virtual ~MissionClass(void) {};
+		MissionClass(NoInitClass const & x) : ObjectClass(x), Timer(x) {;}
+		virtual ~MissionClass(void) {;}
 
 		/*---------------------------------------------------------------------
 		**	Member function prototypes.

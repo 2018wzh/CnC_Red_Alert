@@ -49,8 +49,8 @@ class CargoClass {
 		/*---------------------------------------------------------------------
 		**	Constructors, Destructors, and overloaded operators.
 		*/
-		CargoClass(void) : Quantity(0), CargoHold(0) {};
-		CargoClass(NoInitClass const & ) {};
+		CargoClass(void) : Quantity(0), CargoHold(0) {;}
+		CargoClass(NoInitClass const & ) {;}
 		~CargoClass(void) {CargoHold=0;};
 
 		/*---------------------------------------------------------------------
@@ -60,7 +60,7 @@ class CargoClass {
 		#ifdef CHEAT_KEYS
 		void Debug_Dump(MonoClass *mono) const;
 		#endif
-		void AI(void) {};
+		void AI(void) {;}
 
 		int How_Many(void) const {return Quantity;};
 		bool Is_Something_Attached(void) const {return (CargoHold != 0);};

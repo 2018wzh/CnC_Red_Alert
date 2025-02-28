@@ -130,7 +130,7 @@ class ObjectClass : public AbstractClass
 		**	Constructor & destructors.
 		*/
 		ObjectClass(RTTIType rtti, int id);
-		ObjectClass(NoInitClass const & x) : AbstractClass(x), Next(x), Trigger(x) {};
+		ObjectClass(NoInitClass const & x) : AbstractClass(x), Next(x), Trigger(x) {;}
 		virtual ~ObjectClass(void) {Next = 0;};
 		int operator < (ObjectClass const & object) const {return Sort_Y() < object.Sort_Y();};
 		int operator > (ObjectClass const & object) const {return Sort_Y() > object.Sort_Y();};

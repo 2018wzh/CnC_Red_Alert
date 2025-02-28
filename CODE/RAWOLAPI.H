@@ -239,7 +239,7 @@ class RADownloadEventSink :
 {
 public:
 	RADownloadEventSink();
-	virtual ~RADownloadEventSink() {};
+	virtual ~RADownloadEventSink() {;}
 
 //  BEGIN_COM_MAP(RADownloadEventSink)
 //    COM_INTERFACE_ENTRY(IDownloadEvent)

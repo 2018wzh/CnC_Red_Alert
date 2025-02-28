@@ -121,8 +121,8 @@ class TeamTypeClass : public AbstractTypeClass
 		**	Constructor/Destructor
 		*/
 		TeamTypeClass(void);
-		TeamTypeClass(NoInitClass const & x) : AbstractTypeClass(x), Trigger(x) {};
-		virtual ~TeamTypeClass(void) {};
+		TeamTypeClass(NoInitClass const & x) : AbstractTypeClass(x), Trigger(x) {;}
+		virtual ~TeamTypeClass(void) {;}
 
 		static void * operator new(size_t );
 		static void * operator new(size_t, void * ptr) {return(ptr);};

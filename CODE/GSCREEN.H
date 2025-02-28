@@ -46,7 +46,7 @@ class GScreenClass
 	public:
 
 		GScreenClass(void);
-		GScreenClass(NoInitClass const &) {};
+		GScreenClass(NoInitClass const &) {;}
 
 		/*
 		** Initialization
@@ -61,7 +61,7 @@ class GScreenClass
 		**	Player I/O is routed through here. It is called every game tick.
 		*/
 		virtual void Input(KeyNumType & key, int & x, int & y);
-		virtual void AI(KeyNumType &, int, int) {};
+		virtual void AI(KeyNumType &, int, int) {;}
 		virtual void Add_A_Button(GadgetClass & gadget);
 		virtual void Remove_A_Button(GadgetClass & gadget);
 
@@ -80,7 +80,7 @@ class GScreenClass
 		**	Is called when actual drawing is required. This is the function to
 		**	override in derived classes.
 		*/
-		virtual void Draw_It(bool =false) {};
+		virtual void Draw_It(bool =false) {;}
 
 		/*
 		**	This moves the hidpage up to the seenpage.

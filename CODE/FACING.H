@@ -48,8 +48,8 @@ class FacingClass
 {
 	public:
 		FacingClass(void);
-		FacingClass(DirType dir) : CurrentFacing(dir), DesiredFacing(dir) {};
-		FacingClass(NoInitClass const & ) {};
+		FacingClass(DirType dir) : CurrentFacing(dir), DesiredFacing(dir) {;}
+		FacingClass(NoInitClass const & ) {;}
 
 		operator DirType (void) const {return(CurrentFacing);};
 

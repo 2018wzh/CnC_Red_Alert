@@ -53,7 +53,7 @@ class PaletteClass
 			COLOR_COUNT=256			// Number of color indices on the palette.
 		};
 
-		PaletteClass(void) {};
+		PaletteClass(void) {;}
 		PaletteClass(RGBClass const & rgb);
 		PaletteClass(unsigned char *binary_palette);
 

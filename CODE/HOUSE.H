@@ -59,7 +59,7 @@ class FactoryClass;
 class HouseStaticClass {
 	public:
 		HouseStaticClass(void);
-		HouseStaticClass(NoInitClass const & ) {};
+		HouseStaticClass(NoInitClass const & ) {;}
 
 		/*
 		**	This value indicates the degree of smartness to assign to this house.
@@ -627,7 +627,7 @@ class HouseClass {
 		static void * operator new(size_t , void * ptr) {return(ptr);};
 		static void operator delete(void *ptr);
 		HouseClass(HousesType house);
-		HouseClass(NoInitClass const & x) : Class(x), Control(x), AlertTime(x), BorrowedTime(x), Attack(x), AITimer(x), DamageTime(x), TeamTime(x), TriggerTime(x), SpeakAttackDelay(x), SpeakPowerDelay(x), SpeakMoneyDelay(x), SpeakMaxedDelay(x) {};
+		HouseClass(NoInitClass const & x) : Class(x), Control(x), AlertTime(x), BorrowedTime(x), Attack(x), AITimer(x), DamageTime(x), TeamTime(x), TriggerTime(x), SpeakAttackDelay(x), SpeakPowerDelay(x), SpeakMoneyDelay(x), SpeakMaxedDelay(x) {;}
 		~HouseClass(void);
 		operator HousesType(void) const;
 
@@ -854,12 +854,12 @@ class HouseClass {
 			UrgencyType	Urgency;			// The urgency of the build request.
 			StructType	Structure;		// The type of building to produce.
 
-			BuildChoiceClass(UrgencyType u, StructType s) : Urgency(u), Structure(s) {};
-			BuildChoiceClass(NoInitClass const & ) {};
+			BuildChoiceClass(UrgencyType u, StructType s) : Urgency(u), Structure(s) {;}
+			BuildChoiceClass(NoInitClass const & ) {;}
 			int Save(Pipe &) const {return(true);};
 			int Load(Straw &) {return(true);};
-			void Code_Pointers(void) {};
-			void Decode_Pointers(void) {};
+			void Code_Pointers(void) {;}
+			void Decode_Pointers(void) {;}
 		};
 
 		static TFixedIHeapClass<BuildChoiceClass> BuildChoice;

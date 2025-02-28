@@ -290,7 +290,7 @@ class EListClass : public ListClass
 {
 	public:
 		EListClass(int id, int x, int y, int w, int h, TextPrintType flags, void const * up, void const * down) :
-			ListClass(id, x, y, w, h, flags, up, down) {};
+			ListClass(id, x, y, w, h, flags, up, down) {;}
 
 		virtual int Add_Object(EObjectClass * obj) {
 			return(ListClass::Add_Item((char const *)obj));

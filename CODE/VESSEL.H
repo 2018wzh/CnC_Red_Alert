@@ -77,7 +77,7 @@ class VesselClass : public DriveClass
 		CDTimerClass<FrameTimerClass> PulseCountDown;
 
 		VesselClass(VesselType classid, HousesType house);
-		VesselClass(NoInitClass const & x) : DriveClass(x), Class(x), SecondaryFacing(x) {};
+		VesselClass(NoInitClass const & x) : DriveClass(x), Class(x), SecondaryFacing(x) {;}
 		static void * operator new(size_t size);
 		static void * operator new(size_t , void * ptr) {return(ptr);};
 		static void operator delete(void *ptr);

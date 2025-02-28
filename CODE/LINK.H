@@ -47,8 +47,8 @@
 class LinkClass
 {
 	public:
-		LinkClass(NoInitClass const &) {};
-		LinkClass(void) : Next(0), Prev(0) {};
+		LinkClass(NoInitClass const &) {;}
+		LinkClass(void) : Next(0), Prev(0) {;}
 		virtual ~LinkClass(void);
 
 		virtual LinkClass * Get_Next(void) const;

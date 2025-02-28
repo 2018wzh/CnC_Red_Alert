@@ -112,8 +112,8 @@ class GadgetClass : public LinkClass
 		} FlagEnum;
 
 		GadgetClass(int x, int y, int w, int h, unsigned flags, int sticky=false);
-		GadgetClass(NoInitClass const & x) : LinkClass(x) {};
-		GadgetClass(void) {};
+		GadgetClass(NoInitClass const & x) : LinkClass(x) {;}
+		GadgetClass(void) {;}
 		GadgetClass(GadgetClass const & gadget);
 		virtual ~GadgetClass(void);
 
@@ -136,7 +136,7 @@ class GadgetClass : public LinkClass
 		virtual void Enable(void);
 		virtual unsigned Get_ID(void) const {return 0;};
 		virtual void Flag_To_Redraw(void);
-		virtual void Peer_To_Peer(unsigned , KeyNumType & , ControlClass & ) {};
+		virtual void Peer_To_Peer(unsigned , KeyNumType & , ControlClass & ) {;}
 		virtual void Set_Focus(void);
 		virtual void Clear_Focus(void);
 		virtual bool Has_Focus(void);

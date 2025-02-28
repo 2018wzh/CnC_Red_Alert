@@ -44,7 +44,7 @@ class PowerClass : public RadarClass
 {
 	public:
 		PowerClass(void);
-		PowerClass(NoInitClass const & x) : RadarClass(x), FlashTimer(x) {};
+		PowerClass(NoInitClass const & x) : RadarClass(x), FlashTimer(x) {;}
 
 		/*
 		** Initialization
@@ -65,7 +65,7 @@ class PowerClass : public RadarClass
 		*/
 		class PowerButtonClass : public GadgetClass {
 			public:
-				PowerButtonClass(void) : GadgetClass(0,0,0,0,LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS,true) {};
+				PowerButtonClass(void) : GadgetClass(0,0,0,0,LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS,true) {;}
 
 			protected:
 				virtual int Action(unsigned flags, KeyNumType & key);

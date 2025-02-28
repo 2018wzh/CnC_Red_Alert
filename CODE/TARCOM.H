@@ -52,8 +52,8 @@ class TarComClass : public TurretClass
 		/*---------------------------------------------------------------------
 		**	Constructors, Destructors, and overloaded operators.
 		*/
-		TarComClass(void) {};
-		TarComClass(UnitType classid, HousesType house) : TurretClass(classid, house) {};
+		TarComClass(void) {;}
+		TarComClass(UnitType classid, HousesType house) : TurretClass(classid, house) {;}
 		virtual ~TarComClass(void);
 
 		/*---------------------------------------------------------------------

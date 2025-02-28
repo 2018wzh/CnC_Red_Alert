@@ -63,7 +63,7 @@ class SmudgeClass : public ObjectClass
 		static void * operator new(size_t , void * ptr) {return(ptr);};
 		static void operator delete(void *ptr);
 		SmudgeClass(SmudgeType type, COORDINATE pos=0xFFFFFFFFUL, HousesType house = HOUSE_NONE);
-		SmudgeClass(NoInitClass const & x) : ObjectClass(x), Class(x) {};
+		SmudgeClass(NoInitClass const & x) : ObjectClass(x), Class(x) {;}
 		operator SmudgeType(void) const {return Class->Type;};
 		virtual ~SmudgeClass(void) {if (GameActive) SmudgeClass::Limbo();Class=0;};
 

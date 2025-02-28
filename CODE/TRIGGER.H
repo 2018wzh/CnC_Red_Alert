@@ -55,7 +55,7 @@ class TriggerClass {
 		**	Constructor/Destructor
 		*/
 		TriggerClass(TriggerTypeClass * trigtype=NULL);
-		TriggerClass(NoInitClass const & x) : Class(x), Event1(x), Event2(x) {};
+		TriggerClass(NoInitClass const & x) : Class(x), Event1(x), Event2(x) {;}
 		~TriggerClass(void);
 
 		/*
@@ -74,8 +74,8 @@ class TriggerClass {
 		*/
 		bool Load(Straw & file);
 		bool Save(Pipe & file) const;
-		void Code_Pointers(void) {};
-		void Decode_Pointers(void) {};
+		void Code_Pointers(void) {;}
+		void Decode_Pointers(void) {;}
 
 		/*
 		**	Utility routines

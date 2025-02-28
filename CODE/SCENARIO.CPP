@@ -839,7 +839,7 @@ void Do_Win(void)
 		Fancy_Text_Print(TXT_HACKHACK, x, 110*RESFACTOR, &ColorRemaps[PCOLOR_RED], TBLACK, TPF_CENTER|TPF_VCR|TPF_USE_GRAD_PAL|TPF_DROPSHADOW);
 #endif
 		CountDownTimer = TIMER_SECOND * 3;
-		while (Is_Speaking()) {};
+		while (Is_Speaking()) {;}
 		Speak(VOX_ACCOMPLISHED);
 		while (CountDownTimer || Is_Speaking()) {
 			Call_Back();
@@ -1098,7 +1098,7 @@ void Do_Lose(void)
 	Set_Logic_Page(SeenBuff);
 	Fancy_Text_Print(TXT_SCENARIO_LOST, x, 90*RESFACTOR, &ColorRemaps[PCOLOR_RED], TBLACK, TPF_CENTER|TPF_VCR|TPF_USE_GRAD_PAL|TPF_DROPSHADOW);
 	CountDownTimer = TIMER_SECOND * 3;
-	while (Is_Speaking()) {};
+	while (Is_Speaking()) {;}
 	Speak(VOX_FAIL);
 	while (CountDownTimer || Is_Speaking()) {
 		Call_Back();
@@ -1187,7 +1187,7 @@ void Do_Draw(void)
 	Set_Logic_Page(SeenBuff);
 	Fancy_Text_Print(TXT_WOL_DRAW, x, 90*RESFACTOR, &ColorRemaps[PCOLOR_RED], TBLACK, TPF_CENTER|TPF_VCR|TPF_USE_GRAD_PAL|TPF_DROPSHADOW);
 	CountDownTimer = TIMER_SECOND * 3;
-	while (Is_Speaking()) {};
+	while (Is_Speaking()) {;}
 	Speak(VOX_CONTROL_EXIT);
 	while (CountDownTimer || Is_Speaking()) {
 		Call_Back();

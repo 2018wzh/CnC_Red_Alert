@@ -62,7 +62,7 @@ class AircraftClass : public FootClass, public FlyClass
 		static void operator delete(void *);
 		operator AircraftType(void) const {return Class->Type;};
 		AircraftClass(AircraftType classid, HousesType house);
-		AircraftClass(NoInitClass const & x) : FootClass(x), FlyClass(x), Class(x), SecondaryFacing(x), SightTimer(x) {};
+		AircraftClass(NoInitClass const & x) : FootClass(x), FlyClass(x), Class(x), SecondaryFacing(x), SightTimer(x) {;}
 		virtual ~AircraftClass(void);
 
 		static void Init(void);

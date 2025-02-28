@@ -103,7 +103,7 @@ class WinsockInterfaceClass {
 		virtual void Stop_Listening (void);
 		virtual void Clear_Socket_Error(SOCKET socket);
 		virtual bool Set_Socket_Options ( void );
-		virtual void Set_Broadcast_Address ( void * ) {};
+		virtual void Set_Broadcast_Address ( void * ) {;}
 
 		virtual ProtocolEnum Get_Protocol (void) {
 			return (PROTOCOL_NONE);

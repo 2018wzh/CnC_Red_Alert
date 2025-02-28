@@ -118,8 +118,8 @@ template<class T>
 class TFixedHeapClass : public FixedHeapClass
 {
 	public:
-		TFixedHeapClass(void) : FixedHeapClass(sizeof(T)) {};
-		virtual ~TFixedHeapClass(void) {};
+		TFixedHeapClass(void) : FixedHeapClass(sizeof(T)) {;}
+		virtual ~TFixedHeapClass(void) {;}
 
 
 		virtual int ID(T const * pointer) const {return FixedHeapClass::ID(pointer);};
@@ -140,8 +140,8 @@ class TFixedHeapClass : public FixedHeapClass
 class FixedIHeapClass : public FixedHeapClass
 {
 	public:
-		FixedIHeapClass(int size) : FixedHeapClass(size) {};
-		virtual ~FixedIHeapClass(void) {};
+		FixedIHeapClass(int size) : FixedHeapClass(size) {;}
+		virtual ~FixedIHeapClass(void) {;}
 
 		virtual int Set_Heap(int count, void * buffer=0);
 		virtual void * Allocate(void);
@@ -174,8 +174,8 @@ template<class T>
 class TFixedIHeapClass : public FixedIHeapClass
 {
 	public:
-		TFixedIHeapClass(void) : FixedIHeapClass(sizeof(T)) {};
-		virtual ~TFixedIHeapClass(void) {};
+		TFixedIHeapClass(void) : FixedIHeapClass(sizeof(T)) {;}
+		virtual ~TFixedIHeapClass(void) {;}
 
 		virtual int ID(T const * pointer) const {return FixedIHeapClass::ID(pointer);};
 		virtual int Logical_ID(T const * pointer) const {return(FixedIHeapClass::Logical_ID(pointer));}

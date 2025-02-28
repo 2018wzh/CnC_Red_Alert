@@ -45,8 +45,8 @@ class MapClass: public GScreenClass
 {
 	public:
 
-		MapClass(void) {};
-		MapClass(NoInitClass const & x) : GScreenClass(x), Array(x) {};
+		MapClass(void) {;}
+		MapClass(NoInitClass const & x) : GScreenClass(x), Array(x) {;}
 
 		/*
 		** Initialization
@@ -66,7 +66,7 @@ class MapClass: public GScreenClass
 		bool Base_Region(CELL cell, HousesType & house, ZoneType & zone) const;
 		CELL Nearby_Location(CELL cell, SpeedType speed, int zone=-1, MZoneType check=MZONE_NORMAL) const;
 		ObjectClass * Close_Object(COORDINATE coord) const;
-		virtual void Detach(ObjectClass * ) {};
+		virtual void Detach(ObjectClass * ) {;}
 		int Cell_Region(CELL cell);
 		int Cell_Threat(CELL cell, HousesType house);
 		bool In_Radar(CELL cell) const;

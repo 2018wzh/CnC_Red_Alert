@@ -77,8 +77,8 @@ class RadioClass : public MissionClass {
 		/*---------------------------------------------------------------------
 		**	Constructors, Destructors, and overloaded operators.
 		*/
-		RadioClass(RTTIType rtti, int id) : MissionClass(rtti, id), Radio(0) {};
-		RadioClass(NoInitClass const & x) : MissionClass(x) {};
+		RadioClass(RTTIType rtti, int id) : MissionClass(rtti, id), Radio(0) {;}
+		RadioClass(NoInitClass const & x) : MissionClass(x) {;}
 		virtual ~RadioClass(void) {Radio=0;};
 
 		/*---------------------------------------------------------------------

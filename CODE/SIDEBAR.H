@@ -144,7 +144,7 @@ class SidebarClass: public PowerClass
 			{
 				public:
 					SelectClass(void);
-					SelectClass(NoInitClass const & x) : ControlClass(x) {};
+					SelectClass(NoInitClass const & x) : ControlClass(x) {;}
 
 					void Set_Owner(StripClass & strip, int index);
 
@@ -158,7 +158,7 @@ class SidebarClass: public PowerClass
 			public:
 				StripClass(void) {}
 				StripClass(InitClass const &);
-				StripClass(NoInitClass const & ) {};
+				StripClass(NoInitClass const & ) {;}
 
 				bool Add(RTTIType type, int ID);
 				bool Abandon_Production(int factory);
@@ -366,9 +366,9 @@ class SidebarClass: public PowerClass
 		class SBGadgetClass: public GadgetClass {
 			public:
 //#ifdef WIN32
-				SBGadgetClass(void) : GadgetClass((int)((int)SIDE_X+8)*RESFACTOR, (int)SIDE_Y*RESFACTOR, (int)((int)SIDE_WIDTH-1)*RESFACTOR-1, (int)((int)SIDE_HEIGHT-1)*RESFACTOR, LEFTUP) {};
+				SBGadgetClass(void) : GadgetClass((int)((int)SIDE_X+8)*RESFACTOR, (int)SIDE_Y*RESFACTOR, (int)((int)SIDE_WIDTH-1)*RESFACTOR-1, (int)((int)SIDE_HEIGHT-1)*RESFACTOR, LEFTUP) {;}
 //#else
-//				SBGadgetClass(void) : GadgetClass((int)SIDE_X+8, (int)SIDE_Y, (int)SIDE_WIDTH-1, (int)SIDE_HEIGHT-1, LEFTUP) {};
+//				SBGadgetClass(void) : GadgetClass((int)SIDE_X+8, (int)SIDE_Y, (int)SIDE_WIDTH-1, (int)SIDE_HEIGHT-1, LEFTUP) {;}
 //#endif
 			protected:
 				virtual int Action(unsigned flags, KeyNumType & key);

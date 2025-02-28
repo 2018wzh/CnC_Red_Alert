@@ -44,8 +44,8 @@
 class BaseNodeClass
 {
 	public:
-		BaseNodeClass(void) {};
-		BaseNodeClass(StructType building, CELL cell) : Type(building), Cell(cell) {};
+		BaseNodeClass(void) {;}
+		BaseNodeClass(StructType building, CELL cell) : Type(building), Cell(cell) {;}
 		int operator == (BaseNodeClass const & node);
 		int operator != (BaseNodeClass const & node);
 		int operator > (BaseNodeClass const & node);
@@ -66,7 +66,7 @@ class BaseClass
 		/*
 		** Constructor/Destructor
 		*/
-		BaseClass(void) {};
+		BaseClass(void) {;}
 		virtual ~BaseClass() {Nodes.Clear();}
 
 		/*
@@ -82,8 +82,8 @@ class BaseClass
 		static char *INI_Name(void) {return "Base";}
 		bool Load(Straw & file);
 		bool Save(Pipe & file) const;
-		virtual void Code_Pointers(void) {};
-		virtual void Decode_Pointers(void) {};
+		virtual void Code_Pointers(void) {;}
+		virtual void Decode_Pointers(void) {;}
 
 		/*
 		** Tells if the given node has been built or not

@@ -53,7 +53,7 @@ class LayerClass : public DynamicVectorClass<ObjectClass *>
 
 
 		virtual void Init(void) {Clear();};
-		virtual void One_Time(void) {};
+		virtual void One_Time(void) {;}
 
 		/*
 		**	File I/O.

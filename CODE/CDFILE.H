@@ -56,7 +56,7 @@ class CDFileClass : public BufferIOFileClass
 	public:
 		CDFileClass(char const *filename);
 		CDFileClass(void);
-		virtual ~CDFileClass(void) {};
+		virtual ~CDFileClass(void) {;}
 
 		virtual char const * Set_Name(char const *filename);
 		virtual int Open(char const *filename, int rights=READ);

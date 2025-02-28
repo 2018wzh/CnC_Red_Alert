@@ -77,9 +77,9 @@ class BulletClass :	public ObjectClass,
 		static void operator delete(void *ptr);
 		BulletClass(BulletType id, TARGET target, TechnoClass * Payback, int strength, WarheadType warhead, int speed);
 #ifdef FIXIT_MULTI_SAVE
-		BulletClass(NoInitClass const & x) : ObjectClass(x), Class(x), FlyClass(x), FuseClass(x), PrimaryFacing(x) {};
+		BulletClass(NoInitClass const & x) : ObjectClass(x), Class(x), FlyClass(x), FuseClass(x), PrimaryFacing(x) {;}
 #else
-		BulletClass(NoInitClass const & x) : ObjectClass(x), Class(x), FlyClass(x), FuseClass(x) {};
+		BulletClass(NoInitClass const & x) : ObjectClass(x), Class(x), FlyClass(x), FuseClass(x) {;}
 #endif
 		virtual ~BulletClass(void);
 		operator BulletType(void) const {return Class->Type;};

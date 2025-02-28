@@ -62,7 +62,7 @@ class TerrainClass : public ObjectClass, public StageClass
 		static void * operator new(size_t , void * ptr) {return(ptr);};
 		static void operator delete(void *ptr);
 		TerrainClass(TerrainType id, CELL cell);
-		TerrainClass(NoInitClass const & x) : ObjectClass(x), Class(x), StageClass(x) {};
+		TerrainClass(NoInitClass const & x) : ObjectClass(x), Class(x), StageClass(x) {;}
 		virtual ~TerrainClass(void);
 		operator TerrainType(void) const {return Class->Type;};
 
@@ -105,7 +105,7 @@ class TerrainClass : public ObjectClass, public StageClass
 		/*
 		**	User I/O.
 		*/
-		virtual void Clicked_As_Target(int) {};
+		virtual void Clicked_As_Target(int) {;}
 
 		/*
 		**	Combat related.

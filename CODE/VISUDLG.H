@@ -69,7 +69,7 @@ class VisualControlsClass
 
 	public:
 
-		VisualControlsClass(void) {};
+		VisualControlsClass(void) {;}
 		void Process(void);
 };
 

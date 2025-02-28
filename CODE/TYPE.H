@@ -78,8 +78,8 @@ class AbstractTypeClass
 		int FullName;
 
 		AbstractTypeClass(RTTIType rtti, int id, int name, char const * ini);
-		AbstractTypeClass(NoInitClass const & ) {};
-		~AbstractTypeClass(void) {};
+		AbstractTypeClass(NoInitClass const & ) {;}
+		~AbstractTypeClass(void) {;}
 
 		RTTIType What_Am_I(void) const {return(RTTI);};
 		TARGET As_Target(void) const {return(Build_Target(RTTI, ID));};
@@ -984,7 +984,7 @@ class UnitTypeClass : public TechnoTypeClass
 		static void Init_Heap(void);
 		static UnitType From_Name(char const * name);
 		static UnitTypeClass & As_Reference(UnitType type);
-		static void Init(TheaterType ) {};
+		static void Init(TheaterType ) {;}
 		static void One_Time(void);
 		static void Prep_For_Add(void);
 
@@ -1088,7 +1088,7 @@ class VesselTypeClass : public TechnoTypeClass
 		static void Init_Heap(void);
 		static VesselType From_Name(char const * name);
 		static VesselTypeClass & As_Reference(VesselType type);
-		static void Init(TheaterType ) {};
+		static void Init(TheaterType ) {;}
 		static void One_Time(void);
 		static void Prep_For_Add(void);
 
@@ -1231,7 +1231,7 @@ class InfantryTypeClass : public TechnoTypeClass
 		static void Init_Heap(void);
 		static InfantryType From_Name(char const * name);
 		static InfantryTypeClass & As_Reference(InfantryType type);
-		static void Init(TheaterType ) {};
+		static void Init(TheaterType ) {;}
 		static void One_Time(void);
 		static void Prep_For_Add(void);
 
@@ -1331,7 +1331,7 @@ class AircraftTypeClass : public TechnoTypeClass
 		static void Init_Heap(void);
 		static AircraftType From_Name(char const * name);
 		static AircraftTypeClass & As_Reference(AircraftType a);
-		static void Init(TheaterType ) {};
+		static void Init(TheaterType ) {;}
 		static void One_Time(void);
 		static void Prep_For_Add(void);
 
@@ -1510,7 +1510,7 @@ class BulletTypeClass : public ObjectTypeClass
 
 		static void Init_Heap(void);
 		static BulletTypeClass & As_Reference(BulletType type);
-		static void Init(TheaterType ) {};
+		static void Init(TheaterType ) {;}
 		static void One_Time(void);
 
 		virtual bool Read_INI(CCINIClass & ini);
@@ -1617,7 +1617,7 @@ class TemplateTypeClass: public ObjectTypeClass
 		unsigned char Width,Height;
 
 		//----------------------------------------------------------
-		TemplateTypeClass(NoInitClass const & x) : ObjectTypeClass(x) {};
+		TemplateTypeClass(NoInitClass const & x) : ObjectTypeClass(x) {;}
 		TemplateTypeClass(
 			TemplateType iconset,
 			int theater,

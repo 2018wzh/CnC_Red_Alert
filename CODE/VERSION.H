@@ -84,7 +84,7 @@ class VersionClass {
 		// Constructor/Destructor
 		//.....................................................................
 		VersionClass(void);
-		virtual ~VersionClass() {};
+		virtual ~VersionClass() {;}
 
 		//.....................................................................
 		// These routines return the current version number.  The long version

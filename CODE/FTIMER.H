@@ -241,7 +241,7 @@ class TTimerClass : public BasicTimerClass<T> {
 		TTimerClass(unsigned long set=0);
 		TTimerClass(NoInitClass const & x);
 
-		~TTimerClass(void) {};
+		~TTimerClass(void) {;}
 
 		// Fetches current value of timer.
 		unsigned long Value(void) const;

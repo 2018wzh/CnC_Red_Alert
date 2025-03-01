@@ -76,7 +76,8 @@ OBJECTS = 			&
 		soundint.obj	&
 		soundlck.obj	&
 		soscodec.obj	&
-		auduncmp.obj	
+		auduncmp.obj	&
+		sos_stub.obj
 
 
 #---------------------------------------------------------------------------

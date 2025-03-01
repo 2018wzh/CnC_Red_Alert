@@ -160,7 +160,7 @@ Buffer::Buffer(Buffer const & buffer) :
  *=============================================================================================*/
 Buffer & Buffer::operator = (Buffer const & buffer)
 {
-	if (buffer != this) {
+	if (&buffer != this) {
 		if (IsAllocated) {
 			delete [] BufferPtr;
 		}

@@ -152,7 +152,7 @@ char const * RawFileClass::Set_Name(char const * filename)
 {
 	if (Filename != NULL && Allocated) {
 		free((char *)Filename);
-		((char *&)Filename) = 0;
+		Filename = 0;//((char *&)Filename) = 0;
 		Allocated = false;
 	}
 
@@ -1078,8 +1078,8 @@ unsigned long RawFileClass::Get_Date_Time(void)
 	}
 	return(0);
 #else
-	unsigned short time;
-	unsigned short date;
+	unsigned time;
+	unsigned date;
 	unsigned long datetime = 0;
 
 

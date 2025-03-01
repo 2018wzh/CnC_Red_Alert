@@ -189,7 +189,7 @@ class TPoint2D
 #define NOINITCLASS
 struct NoInitClass {
 	public:
-		void operator () (void) const {};
+		void operator () (void) const {;}
 };
 #endif
 

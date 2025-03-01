@@ -94,10 +94,14 @@ typedef struct {
 */
 typedef struct {
 	unsigned short		NumShapes;			// number of shapes in the block
+	#ifdef __cplusplus
+	long* Offsets() { return reinterpret_cast<long*>(&NumShapes+1); }
+	#else
 	long		Offsets[];			// array of offsets to shape data
 										//  (offsets within the shape block, with
 										//  0 being the first offset value, not the
 										//  start of the shape block)
+	#endif
 } ShapeBlock_Type;
 
 

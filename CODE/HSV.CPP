@@ -42,6 +42,7 @@
 #include	"watcom.h"
 #include	"hsv.h"
 #include	"rgb.h"
+#include	"palette.h"
 
 HSVClass const HSVClass::BlackColor(0, 0, 0);
 

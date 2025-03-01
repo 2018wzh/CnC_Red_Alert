@@ -80,7 +80,6 @@ extern "C" {
 }
 #endif
 
-
 inline void *Add_Long_To_Pointer(void const *ptr, long size) 
 {
  	return ((void *) ( (char const *) ptr + size));

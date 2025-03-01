@@ -349,7 +349,7 @@ extern "C" {
 	long Get_User_Tick_Count(void);
 }
 //bool Init_Timer_System(unsigned int freq, int partial=false);
-bool Remove_Timer_System(void);
+BOOL Remove_Timer_System(void);
 #else
 extern WinTimerClass	*		WindowsTimer;
 #endif
@@ -374,11 +374,11 @@ class UserTimerClass
 {
 	public:
 		#ifdef WIN32
-			long operator () (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_User_Tick_Count());};
-			operator long (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_User_Tick_Count());};
+			long operator () (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_User_Tick_Count());}
+			operator long (void) const {if (!WindowsTimer) return(0);return(WindowsTimer->Get_User_Tick_Count());}
 		#else
-			long operator () (void) const {return(Get_User_Tick_Count());};
-			operator long (void) const {return(Get_User_Tick_Count());};
+			long operator () (void) const {return(Get_User_Tick_Count());}
+			operator long (void) const {return(Get_User_Tick_Count());}
 		#endif
 };
 

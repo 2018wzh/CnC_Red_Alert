@@ -3444,7 +3444,7 @@ typedef struct RemapControlType
 **	by the structure below. For every element of terrain there is a
 **	corresponding GroundType structure.
 */
-typedef struct {
+typedef struct GroundType {
 	fixed	Cost[SPEED_COUNT];	// Terrain effect cost (normal).
 	bool				Build;					// Can build on this terrain?
 } GroundType;

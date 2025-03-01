@@ -58,7 +58,7 @@ class HSVClass
 				Hue(hue),
 				Saturation(saturation),
 				Value(value)
-			{};
+			{;}
 		operator RGBClass (void) const;
 
 		enum {

@@ -81,7 +81,7 @@ class OverlayClass : public ObjectClass
 		*/
 		virtual bool Mark(MarkType);
 		virtual ObjectTypeClass const & Class_Of(void) const {return *Class;};
-		virtual void Draw_It(int , int , WindowNumberType ) const {};
+		virtual void Draw_It(int , int , WindowNumberType ) const {;}
 
 	private:
 		/*

@@ -249,9 +249,9 @@ class GadgetClass : public LinkClass
 		virtual int Clicked_On(KeyNumType & key, unsigned flags, int x, int y);
 };
 
-inline GadgetClass::FlagEnum operator |(GadgetClass::FlagEnum, GadgetClass::FlagEnum);
-inline GadgetClass::FlagEnum operator &(GadgetClass::FlagEnum, GadgetClass::FlagEnum);
-inline GadgetClass::FlagEnum operator ~(GadgetClass::FlagEnum);
+//inline GadgetClass::FlagEnum operator |(GadgetClass::FlagEnum, GadgetClass::FlagEnum); // mango - not used
+//inline GadgetClass::FlagEnum operator &(GadgetClass::FlagEnum, GadgetClass::FlagEnum);
+//inline GadgetClass::FlagEnum operator ~(GadgetClass::FlagEnum);
 
 
 #endif

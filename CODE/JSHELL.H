@@ -202,9 +202,9 @@ T _rotl(T X, int n)
 **	The shape flags are likely to be "or"ed together and other such bitwise
 **	manipulations. These instatiated operator templates allow this.
 */
-inline ShapeFlags_Type operator |(ShapeFlags_Type, ShapeFlags_Type);
-inline ShapeFlags_Type operator &(ShapeFlags_Type, ShapeFlags_Type);
-inline ShapeFlags_Type operator ~(ShapeFlags_Type);
+//inline ShapeFlags_Type operator |(ShapeFlags_Type, ShapeFlags_Type);
+//inline ShapeFlags_Type operator &(ShapeFlags_Type, ShapeFlags_Type);
+//inline ShapeFlags_Type operator ~(ShapeFlags_Type);
 
 
 void Set_Bit(void * array, int bit, int value);

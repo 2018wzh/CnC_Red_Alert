@@ -9,3 +9,8 @@ watcom/
 *.LOG
 *.PCH
 *.BAK
+*.MAP
+*.LBC
+*.LST
+*.RSP
+WWFLAT32/SRCDEBUG

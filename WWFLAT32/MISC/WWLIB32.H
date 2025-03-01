@@ -57,7 +57,7 @@
 #include <timer.h>
 #include <video.h>
 #include <vbuffer.h>
-#include <windows.h>
+#include <window.h>
 #include <wsa.h>
 #include <wwmem.h>
 

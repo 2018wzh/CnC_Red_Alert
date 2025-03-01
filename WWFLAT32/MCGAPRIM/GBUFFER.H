@@ -146,6 +146,10 @@ class GraphicBufferClass;
 class VideoViewPortClass;
 class VideoBufferClass;
 
+class BitmapClass;
+class TPoint2D;
+
+
 GraphicBufferClass *Set_Logic_Page(GraphicBufferClass *ptr);
 GraphicBufferClass *Set_Logic_Page(GraphicBufferClass &ptr);
 
@@ -261,9 +265,6 @@ class GraphicViewPortClass {
 		GraphicBufferClass	*GraphicBuff;			// related graphic buff
 };
 
-class BitmapClass;
-class TPoint2D;
-
 /*=========================================================================*/
 /* GraphicBufferClass - A GraphicBuffer refers to an actual instance of an	*/
 /*		allocated buffer.  The GraphicBuffer may be drawn to directly 			*/
@@ -283,7 +284,7 @@ class GraphicBufferClass : public GraphicViewPortClass, public BufferClass {
 		GraphicBufferClass(int w, int h, void *buffer = 0);
 		~GraphicBufferClass();
 
-//		void Scale_Rotate(BitmapClass &bmp,const TPoint2D &pt,long scale=0x0100,unsigned char angle=0);
+		void Scale_Rotate(BitmapClass &bmp,const TPoint2D &pt,long scale=0x0100,unsigned char angle=0);
 };
 
 /***************************************************************************

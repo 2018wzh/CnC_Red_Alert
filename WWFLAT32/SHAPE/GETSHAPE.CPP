@@ -209,7 +209,7 @@ VOID * cdecl Extract_Shape(VOID const *buffer, int shape)
 	if (!buffer || shape < 0 || shape >= block->NumShapes)
 		return(NULL);
 
-	offset = block->Offsets[shape];
+	offset = block->GetOffsets()[shape];
 
 	return(bytebuf + 2 + offset);
 

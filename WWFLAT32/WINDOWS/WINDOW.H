@@ -34,8 +34,8 @@
  * Functions:                                                              *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#ifndef WINDOWS_H
-#define WINDOWS_H
+#ifndef WINDOWSs_H
+#define WINDOWSs_H
 
 /*=========================================================================*/
 /* The following prototypes are for the file: WINHIDE.CPP						*/

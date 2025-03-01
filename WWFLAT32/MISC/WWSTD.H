@@ -68,7 +68,7 @@
 /*
 **	Common constants used in normal code.
 */
-#define ERROR		-1
+#define WWERROR		-1
 
 #ifdef NULL
 #undef	NULL

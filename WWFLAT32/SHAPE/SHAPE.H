@@ -95,8 +95,9 @@ typedef struct {
 typedef struct {
 	UWORD		NumShapes;			// number of shapes in the block
 	#ifdef __cplusplus
-	LONG* Offsets() { return reinterpret_cast<LONG*>(&NumShapes+1); }
+	LONG* GetOffsets() { return reinterpret_cast<LONG*>((&NumShapes)+1); }
 	#else
+	LONG* GetOffsets() { return &Offsets[0]; }
 	LONG		Offsets[];			// array of offsets to shape data
 										//  (offsets within the shape block, with
 										//  0 being the first offset value, not the

@@ -63,7 +63,7 @@ BYTE *cdecl Find_Argv(BYTE const *str);
 /*=========================================================================*/
 /* The following prototypes are for the file: LIB.CPP								*/
 /*=========================================================================*/
-char *Find_Argv(char const *str);
+//char *Find_Argv(char const *str);
 void Mono_Mem_Dump(void const *databuf, int bytes, int y);
 void Convert_RGB_To_HSV(unsigned int r, unsigned int g, unsigned int b, unsigned int *h, unsigned int *s, unsigned int *v);
 void Convert_HSV_To_RGB(unsigned int h, unsigned int s, unsigned int v, unsigned int *r, unsigned int *g, unsigned int *b);
@@ -119,7 +119,7 @@ LONG Swap_LONG(LONG number);
 /* The following prototype is for the file: FACING8.ASM							*/
 /*=========================================================================*/
 
-int Desired_Facing8(int x1, int y1, int x2, int y2);
+//int Desired_Facing8(int x1, int y1, int x2, int y2);
 
 /*=========================================================================*/
 /* The following prototype is for the file: FACING16.ASM							*/
@@ -131,7 +131,7 @@ int Desired_Facing16(int x1, int y1, int x2, int y2);
 /* The following prototype is for the file: FACINGFF.ASM							*/
 /*=========================================================================*/
 
-int Desired_Facing256(int x1, int y1, int x2, int y2);
+//int Desired_Facing256(int x1, int y1, int x2, int y2);
 
 /*=========================================================================*/
 /* The following prototype is for the file: FADING.ASM							*/
@@ -155,9 +155,9 @@ extern ULONG random ( ULONG mod )  ;
 extern void  randomize ( void ) ;
 
 extern int Clip_Rect ( int * x , int * y , int * dw , int * dh ,
-	       	   			 int width , int height ) ;          			   
-extern int Confine_Rect ( int * x , int * y , int dw , int dh , 
-	      	      			 int width , int height ) ;          		   
+	       	   			 int width , int height ) ;
+extern int Confine_Rect ( int * x , int * y , int dw , int dh ,
+	      	      			 int width , int height ) ;
 
 
 
@@ -166,7 +166,7 @@ extern int Confine_Rect ( int * x , int * y , int dw , int dh ,
 /*=========================================================================*/
 
 extern WORD OperationgSystem;
-										  
+
 #ifdef __cplusplus
 }
 #endif

@@ -21,6 +21,21 @@ The current state of the source code does not fully compile and will require som
 - OpenWatcom C/C++ (v2.0) for C/C++ source files
 - Borland Turbo Assembler (TASM v4.0) for assembly files
 
+Specifically the following files from Turbo Assembler are needed:
+
+```
+	DPMI16BI.OVL
+	DPMILOAD.EXE
+	RTM.EXE		
+	TASM32.EXE	
+	TLINK.EXE	
+	TLINK32.EXE
+	DPMI32VM.OVL
+	DPMIMEM.DLL
+	TASM.EXE
+	TDSTRIP.EXE
+```
+
 An environment to build is currently provided which works in dosbox-x. To build, place openwatcom in `watcom`, and `tasm.exe` in the bin folder, then:
 
 ```
@@ -28,6 +43,7 @@ An environment to build is currently provided which works in dosbox-x. To build,
 	[inside dosbox]
 	env.bat
 	cd wwflat32
+	prepare.bat
 	wmake
 	cd ..\code
 	wmake
@@ -40,11 +56,21 @@ For the windows build, the following should suffice:
 	[inside dosbox]
 	env.bat
 	cd win32lib
+	prepare.bat
 	wmake WIN32=1
 	cd ..\code
 	wmake WIN32=1
 ```
 
+You also need to build the "EBN.EXE" tool to build the .IBN files which can be done as follows:
+
+```
+	./launch.sh
+	[inside dosbox]
+	env.bat
+	cd extras
+	make.bat
+```
 
 Please note that to keep things simple, the current focus of this repository it to build the DOS version in the current version of OpenWatcom, which requires a few changes as the modern compiler is slightly more strict in places. Also the codebase seems to require a lot of manual tweaking to get the correct build state (such as the CD DOS version not building with the expansion pack changes).
 

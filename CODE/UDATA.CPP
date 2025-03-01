@@ -1073,7 +1073,7 @@ void UnitTypeClass::One_Time(void)
 	for (UnitType index = UNIT_FIRST; index < UNIT_COUNT; index++) {
 		char	fullname[_MAX_FNAME+_MAX_EXT];
 		char	buffer[_MAX_FNAME];
-		UnitTypeClass const & uclass = As_Reference(index);
+		UnitTypeClass & uclass = As_Reference(index); // mango - NOT consr
 		CCFileClass	file;
 
 		void const * ptr;		// Shape pointer and set pointer.
@@ -1090,12 +1090,12 @@ void UnitTypeClass::One_Time(void)
 			#ifndef NDEBUG
 				RawFileClass datafile(fullname);
 				if (datafile.Is_Available()) {
-					((void const *&)uclass.CameoData) = Load_Alloc_Data(datafile);
+					uclass.CameoData = Load_Alloc_Data(datafile); // mango - NOT consr
 				} else {
-					((void const *&)uclass.CameoData) = MFCD::Retrieve(fullname);
+					uclass.CameoData = MFCD::Retrieve(fullname); // mango - NOT consr
 				}
 			#else
-				((void const *&)uclass.CameoData) = MFCD::Retrieve(fullname);
+				uclass.CameoData = MFCD::Retrieve(fullname); // mango - NOT consr
 			#endif
 //		}
 
@@ -1114,7 +1114,7 @@ void UnitTypeClass::One_Time(void)
 			ptr = MFCD::Retrieve(fullname);
 		#endif
 
-		((void const *&)uclass.ImageData) = ptr;
+		uclass.ImageData = ptr; // mango - NOT consr
 		if (ptr != NULL) {
 
 			largest = max(largest, (int)Get_Build_Frame_Width(ptr));

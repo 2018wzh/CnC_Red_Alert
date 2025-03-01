@@ -414,7 +414,7 @@ void AircraftTypeClass::One_Time(void)
 {
 	for (AircraftType index = AIRCRAFT_FIRST; index < AIRCRAFT_COUNT; index++) {
 		char fullname[_MAX_FNAME+_MAX_EXT];
-		AircraftTypeClass	const & uclass = As_Reference(index);
+		AircraftTypeClass & uclass = As_Reference(index); // mango: NOT CONST
 
 		/*
 		**	Fetch the supporting data files for the unit.
@@ -422,13 +422,13 @@ void AircraftTypeClass::One_Time(void)
 		char buffer[_MAX_FNAME];
 		sprintf(buffer, "%sICON", uclass.Graphic_Name());
 		_makepath(fullname, NULL, NULL, buffer, ".SHP");
-		((void const *&)uclass.CameoData) = MFCD::Retrieve(fullname);
+		uclass.CameoData = MFCD::Retrieve(fullname);  // mango: NOT const
 
 		/*
 		**	Generic shape for all houses load method.
 		*/
 		_makepath(fullname, NULL, NULL, uclass.Graphic_Name(), ".SHP");
-		((void const *&)uclass.ImageData) = MFCD::Retrieve(fullname);
+		uclass.ImageData = MFCD::Retrieve(fullname); // mango: NOT const
 	}
 
 	LRotorData = MFCD::Retrieve("LROTOR.SHP");

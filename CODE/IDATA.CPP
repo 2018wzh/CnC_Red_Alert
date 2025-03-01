@@ -1244,7 +1244,7 @@ void InfantryTypeClass::One_Time(void)
 {
 	for (InfantryType index = INFANTRY_FIRST; index < INFANTRY_COUNT; index++) {
 		char fullname[_MAX_FNAME+_MAX_EXT];
-		InfantryTypeClass	const * uclass;
+		InfantryTypeClass	 * uclass; // mango - NOT const
 		CCFileClass	file;
 
 		uclass = &As_Reference(index);
@@ -1257,12 +1257,12 @@ void InfantryTypeClass::One_Time(void)
 		#ifndef NDEBUG
 			RawFileClass sfile(fullname);
 			if (sfile.Is_Available()) {
-				((void const *&)uclass->ImageData) = Load_Alloc_Data(sfile);
+				uclass->ImageData = Load_Alloc_Data(sfile); // mango - NOT const
 			} else {
-				((void const *&)uclass->ImageData) = MFCD::Retrieve(fullname);
+				uclass->ImageData = MFCD::Retrieve(fullname); // mango - NOT const
 			}
 		#else
-			((void const *&)uclass->ImageData) = MFCD::Retrieve(fullname);
+			uclass->ImageData = MFCD::Retrieve(fullname); // mango - NOT const
 		#endif
 
 		/*
@@ -1275,12 +1275,12 @@ void InfantryTypeClass::One_Time(void)
 		#ifndef NDEBUG
 			RawFileClass ifile(fullname);
 			if (ifile.Is_Available()) {
-				((void const *&)uclass->CameoData) = Load_Alloc_Data(ifile);
+				uclass->CameoData = Load_Alloc_Data(ifile); // mango - NOT const
 			} else {
-				((void const *&)uclass->CameoData) = MFCD::Retrieve(fullname);
+				uclass->CameoData = MFCD::Retrieve(fullname); // mango - NOT const
 			}
 		#else
-			((void const *&)uclass->CameoData) = MFCD::Retrieve(fullname);
+			uclass->CameoData = MFCD::Retrieve(fullname); // mango - NOT const
 		#endif
 	}
 }

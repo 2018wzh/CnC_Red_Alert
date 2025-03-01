@@ -210,21 +210,21 @@ void BulletTypeClass::One_Time(void)
 	**	Load the bullet shapes.
 	*/
 	for (BulletType index = BULLET_FIRST; index < BULLET_COUNT; index++) {
-		BulletTypeClass const & bullet = As_Reference(index);
+		BulletTypeClass & bullet = As_Reference(index); // mango - NOT const
 		char	fullname[_MAX_FNAME+_MAX_EXT];
 
 		if (!bullet.IsInvisible) {
 			_makepath(fullname, NULL, NULL, bullet.GraphicName, ".SHP");
 
 			#ifdef NDEBUG
-				((void const *&)bullet.ImageData) =	MFCD::Retrieve(fullname);
+				bullet.ImageData =	MFCD::Retrieve(fullname); // mango - NOT const
 			#else
 				RawFileClass file(fullname);
 
 				if (file.Is_Available()) {
-					((void const *&)bullet.ImageData) = Load_Alloc_Data(file);
+					bullet.ImageData = Load_Alloc_Data(file); // mango - NOT const
 				} else {
-					((void const *&)bullet.ImageData) =	MFCD::Retrieve(fullname);
+					bullet.ImageData =	MFCD::Retrieve(fullname); // mango - NOT const
 				}
 			#endif
 		}

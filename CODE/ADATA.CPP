@@ -2263,7 +2263,7 @@ void AnimTypeClass::One_Time(void)
 	for (AnimType index = ANIM_FIRST; index < ANIM_COUNT; index++) {
 		char fullname[_MAX_FNAME+_MAX_EXT];
 
-		AnimTypeClass const & anim = As_Reference(index);
+		AnimTypeClass & anim = As_Reference(index); // mango: NOT const
 
 		if (!anim.IsTheater) {
 
@@ -2272,12 +2272,12 @@ void AnimTypeClass::One_Time(void)
 			#ifndef NDEBUG
 				RawFileClass file(fullname);
 				if (file.Is_Available()) {
-					((void const *&)As_Reference(index).ImageData) = Load_Alloc_Data(file);
+					As_Reference(index).ImageData = Load_Alloc_Data(file); // mango: NOT const
 				} else {
-					((void const *&)As_Reference(index).ImageData) = MFCD::Retrieve(fullname);
+					As_Reference(index).ImageData = MFCD::Retrieve(fullname); // mango: NOT const
 				}
 			#else
-				((void const *&)As_Reference(index).ImageData) = MFCD::Retrieve(fullname);
+				As_Reference(index).ImageData = MFCD::Retrieve(fullname); // mango: NOT const
 			#endif
 		}
 	}
@@ -2303,12 +2303,12 @@ void AnimTypeClass::Init(TheaterType theater)
 {
 	if (theater != LastTheater) {
 		for (AnimType index = ANIM_FIRST; index < ANIM_COUNT; index++) {
-			AnimTypeClass const & anim = As_Reference(index);
+			AnimTypeClass & anim = As_Reference(index); // mango: NOT const
 
 			if (anim.IsTheater) {
 				char fullname[_MAX_FNAME+_MAX_EXT];	// Fully constructed iconset name.
 				_makepath(fullname, NULL, NULL, anim.IniName, Theaters[theater].Suffix);
-				((void const *&)anim.ImageData) = MFCD::Retrieve(fullname);
+				anim.ImageData = MFCD::Retrieve(fullname);  // mango: NOT const
 			}
 		}
 	}

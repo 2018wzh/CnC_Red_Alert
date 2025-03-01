@@ -560,7 +560,7 @@ void VesselTypeClass::One_Time(void)
 	for (VesselType index = VESSEL_FIRST; index < VESSEL_COUNT; index++) {
 		char	fullname[_MAX_FNAME+_MAX_EXT];
 		char	buffer[_MAX_FNAME];
-		VesselTypeClass const & uclass = As_Reference(index);
+		VesselTypeClass & uclass = As_Reference(index); // mango - NOT const
 #ifdef FIXIT_CARRIER	//	checked - ajw 9/28/98
 		if (uclass.Level != -1 || index==VESSEL_CARRIER) {
 #else
@@ -573,16 +573,16 @@ void VesselTypeClass::One_Time(void)
 			*/
 			sprintf(buffer, "%sICON", uclass.Graphic_Name());
 			_makepath(fullname, NULL, NULL, buffer, ".SHP");
-			((void const *&)uclass.CameoData) = MFCD::Retrieve(fullname);
+			uclass.CameoData = MFCD::Retrieve(fullname); // mango - NOT const
 		}
 
 		/*
 		**	Fetch a pointer to the unit's shape data.
 		*/
 		_makepath(fullname, NULL, NULL, uclass.Graphic_Name(), ".SHP");
-		((void const *&)uclass.ImageData) = MFCD::Retrieve(fullname);
+		uclass.ImageData = MFCD::Retrieve(fullname); // mango - NOT const
 
-		((int &)uclass.MaxSize) = 26;
+		uclass.MaxSize = 26; // mango - NOT const
 	}
 }
 

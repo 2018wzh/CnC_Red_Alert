@@ -675,14 +675,14 @@ void TerrainTypeClass::Init(TheaterType theater)
 	if (theater != LastTheater) {
 
 		for (TerrainType index = TERRAIN_FIRST; index < TERRAIN_COUNT; index++) {
-			TerrainTypeClass const & terrain = As_Reference(index);
+			TerrainTypeClass & terrain = As_Reference(index);
 			char	fullname[_MAX_FNAME+_MAX_EXT];
 
 			/*
 			**	Clear any existing shape pointer. All terrain is theater specific, thus if
 			**	it isn't loaded in this routine, it shouldn't exist at all.
 			*/
-			((void const *&)terrain.ImageData) = NULL;
+			terrain.ImageData = NULL; // mango - NOT const
 
 			if (terrain.Theater & (1 << theater)) {
 
@@ -690,11 +690,11 @@ void TerrainTypeClass::Init(TheaterType theater)
 				**	Load in the appropriate object shape data.
 				*/
 				_makepath(fullname, NULL, NULL, terrain.IniName, Theaters[theater].Suffix);
-				((void const *&)terrain.ImageData) = MFCD::Retrieve(fullname);
+				terrain.ImageData = MFCD::Retrieve(fullname); // mango - NOT const
 
 				IsTheaterShape = true;	//Let Build_Frame know that this is a theater specific shape
 				if (terrain.RadarIcon != NULL) delete[] (char *)terrain.RadarIcon;
-				((void const *&)terrain.RadarIcon) = Get_Radar_Icon(terrain.Get_Image_Data(), 0, 1, 3);
+				terrain.RadarIcon = Get_Radar_Icon(terrain.Get_Image_Data(), 0, 1, 3); // mango - NOT const
 				IsTheaterShape = false;
 
 			}

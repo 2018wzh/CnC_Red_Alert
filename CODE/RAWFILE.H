@@ -199,7 +199,7 @@ class RawFileClass : public FileClass
 		**	This points to the filename as a NULL terminated string. It may point to either a
 		**	constant or an allocated string as indicated by the "Allocated" flag.
 		*/
-		char const * const Filename;
+		char const * Filename;
 
 		//
 		// file date and time are in the following formats:
@@ -302,7 +302,7 @@ inline RawFileClass::~RawFileClass(void)
 	Close();
 	if (Allocated && Filename) {
 		free((char *)Filename);
-		((char *&)Filename) = 0;
+		//((char *&)Filename) = 0; // mango - not neccesary here
 		Allocated = false;
 	}
 }

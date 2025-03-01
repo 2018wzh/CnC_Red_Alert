@@ -3125,13 +3125,13 @@ void TemplateTypeClass::Init(TheaterType theater)
 	void const * ptr;		// Working loaded iconset pointer.
 
 	for (TemplateType index = TEMPLATE_FIRST; index < TEMPLATE_COUNT; index++) {
-		TemplateTypeClass	const & tplate = As_Reference(index);
+		TemplateTypeClass	 & tplate = As_Reference(index); // mango - NOT const
 
-		((void const *&)tplate.ImageData) = NULL;
+		tplate.ImageData = NULL; // mango - NOT const
 		if (tplate.Theater & (1<<theater)) {
 			_makepath(fullname, NULL, NULL, tplate.IniName, Theaters[theater].Suffix);
 			ptr = MFCD::Retrieve(fullname);
-			((void const *&)tplate.ImageData) = ptr;
+			tplate.ImageData = ptr; // mango - NOT const
 
 #ifdef WIN32
 			Register_Icon_Set((void*)ptr, TRUE);		//Register icon set for video memory caching

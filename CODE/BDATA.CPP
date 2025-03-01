@@ -3098,7 +3098,7 @@ void BuildingTypeClass::One_Time(void)
 	for (StructType sindex = STRUCT_FIRST; sindex < STRUCT_COUNT; sindex++) {
 		char	fullname[_MAX_FNAME+_MAX_EXT];
 		char	buffer[_MAX_FNAME];
-		BuildingTypeClass const & building = As_Reference(sindex);
+		BuildingTypeClass & building = As_Reference(sindex);
 		/*
 		**	Fetch the sidebar cameo image for this building.
 		*/
@@ -3111,7 +3111,7 @@ void BuildingTypeClass::One_Time(void)
 			}
 
 			_makepath(fullname, NULL, NULL, buffer, ".SHP");
-			((void const *&)building.CameoData) = MFCD::Retrieve(fullname);
+			building.CameoData = MFCD::Retrieve(fullname); // mango - NOT const
 		}
 
 		/*
@@ -3121,7 +3121,7 @@ void BuildingTypeClass::One_Time(void)
 		_makepath(fullname, NULL, NULL, buffer, ".SHP");
 		void const * dataptr;
 		dataptr = MFCD::Retrieve(fullname);
-		((void const *&)building.BuildupData) = dataptr;
+		building.BuildupData = dataptr; // mango - NOT const
 		if (dataptr != NULL) {
 			int timedelay = 1;
 			int count = Get_Build_Frame_Count(dataptr);
@@ -3135,7 +3135,7 @@ void BuildingTypeClass::One_Time(void)
 		**	Fetch the normal game shape for this building.
 		*/
 		_makepath(fullname, NULL, NULL, building.Graphic_Name(), ".SHP");
-		((void const *&)building.ImageData) = MFCD::Retrieve(fullname);
+		building.ImageData = MFCD::Retrieve(fullname); // mango - NOT const
 	}
 
 	// Try to load weap2.shp and tesla coil's lightning shapes
@@ -3353,18 +3353,18 @@ void BuildingTypeClass::Init(TheaterType theater)
 		char fullname[_MAX_FNAME+_MAX_EXT];
 
 		for (StructType sindex = STRUCT_FIRST; sindex < STRUCT_COUNT; sindex++) {
-			BuildingTypeClass const * classptr = &As_Reference(sindex);
+			BuildingTypeClass * classptr = &As_Reference(sindex);
 
 			if (classptr->IsTheater) {
 				_makepath(fullname, NULL, NULL, classptr->Graphic_Name(), Theaters[theater].Suffix);
-				((void const *&)classptr->ImageData) = MFCD::Retrieve(fullname);
+				classptr->ImageData = MFCD::Retrieve(fullname); // mango - NOT const
 
 				/*
 				**	Buildup data is probably theater specific as well. Fetch a pointer to the
 				**	data at this time as well.
 				*/
 				sprintf(fullname, "%sMAKE.%s", classptr->Graphic_Name(), Theaters[theater].Suffix);
-				((void const *&)classptr->BuildupData) = MFCD::Retrieve(fullname);
+				classptr->BuildupData = MFCD::Retrieve(fullname); // mango - NOT const
 				if (classptr->BuildupData) {
 					int timedelay = 1;
 					int count = Get_Build_Frame_Count(classptr->BuildupData);

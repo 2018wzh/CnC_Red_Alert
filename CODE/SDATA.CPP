@@ -383,11 +383,11 @@ void SmudgeTypeClass::Init(TheaterType theater)
 {
 	if (theater != LastTheater) {
 		for (SmudgeType index = SMUDGE_FIRST; index < SMUDGE_COUNT; index++) {
-			SmudgeTypeClass const & smudge = As_Reference(index);
+			SmudgeTypeClass & smudge = As_Reference(index);
 			char fullname[_MAX_FNAME+_MAX_EXT];	// Fully constructed smudge data set name.
 
 			_makepath(fullname, NULL, NULL, smudge.IniName, Theaters[theater].Suffix);
-			((void const *&)smudge.ImageData) = MFCD::Retrieve(fullname);
+			smudge.ImageData = MFCD::Retrieve(fullname); // mango - NOT consr
 		}
 	}
 }

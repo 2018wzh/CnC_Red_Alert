@@ -33,7 +33,6 @@
 #*                                                                         *
 #* Required environment variables:					   *
 #* WWFLAT	= your root WWFLAT path					   *
-#* WWVCS	= root directory for wwlib version control archive	   *
 #* WATCOM	= your Watcom installation path				   *
 #*									   *
 #* Required changes to makefile:					   *
@@ -53,10 +52,6 @@
 !error WWFLAT Environment var not configured.
 !endif
 
-
-!ifndef %WWVCS  
-!error WWVCS Environment var not configured.
-!endif
 
 !ifndef %WATCOM 
 !error WATCOM Environment var not configured.
@@ -195,8 +190,6 @@ vesahook.obj: vesareal.ibn vesahook.asm
 test:
 	mkdir test
 	cd test
-	copy $(%WWVCS)\$(PROJ_NAME)\test\vcs.cfg
-	update
 	wmake 
 	cd ..
 

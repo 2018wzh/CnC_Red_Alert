@@ -34,7 +34,6 @@
 #*                                                                         *
 #* Required environment variables:					   *
 #* WWFLAT	= your root WWFLAT path					   *
-#* WWVCS	= root directory for wwlib version control archive	   *
 #* WATCOM	= your Watcom installation path				   *
 #*									   *
 #* Required changes to makefile:					   *
@@ -189,7 +188,7 @@ all:	$(LIB_DIR)\$(LIB_NAME).lib .SYMBOLIC
 # Lib objects & -+ commands are constructed by substituting within the
 # $^@ macro (which expands to all target dependents, separated with
 # spaces)
-# Tlib's cfg file is not invoked as a response file.
+# Tlibs cfg file is not invoked as a response file.
 # All headers & source files are copied into WWFLAT\SRCDEBUG, for debugging
 #---------------------------------------------------------------------------
 $(LIB_DIR)\$(LIB_NAME).lib: $(LIBS) libs.lbc
@@ -236,16 +235,6 @@ install_dirs: .SYMBOLIC
 	mkdir lib   
 	mkdir srcdebug
 	mkdir tools
-	cd tools  
-	copy $(%WWVCS)\tools\vcs.cfg
-	$(VCS_UPDATE) 
-	cd..   
-	copy $(%WWVCS)\vcs.cfg
-	$(VCS_UPDATE) 
-	cd example 
-	copy $(%WWVCS)\example\vcs.cfg 
-	$(VCS_UPDATE) 
-	cd ..
 
 
 #---------------------------------------------------------------------------
@@ -256,8 +245,6 @@ $(LIB_INSTALL):	.SYMBOLIC
 	echo Installing $^&...
 	md $^&
 	cd $^&
-	copy $(%WWVCS)\$^&\vcs.cfg 
-	$(VCS_UPDATE) 
 	copy *.h ..\include
 	copy *.inc ..\include
 	cd ..

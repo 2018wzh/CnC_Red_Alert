@@ -137,7 +137,7 @@ bool CarryoverClass::Create(void) const
 	}
 
 	if (techno) {
-		bool oldscen = ScenarioInit;
+		int oldscen = ScenarioInit; // mango: used as int
 		techno->Strength = Strength;
 		if (RTTI == RTTI_INFANTRY) {
 			ScenarioInit = 0;

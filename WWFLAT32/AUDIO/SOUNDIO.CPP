@@ -413,7 +413,8 @@ void File_Stream_Preload(int handle)
 	/*
 	** Loop through the blocks and load up the number we need.
 	*/
-	for (int index = st->FilePending; index < num; index++) {
+	int index;
+	for (index = st->FilePending; index < num; index++) {
 		long s = Read_File(fh, Add_Long_To_Pointer(buffer, (long)index * (long)LockedData.StreamBufferSize), LockedData.StreamBufferSize);
 		//printf("Reading block of size %d Stream Buffer = %d\n");
 		if (s) {

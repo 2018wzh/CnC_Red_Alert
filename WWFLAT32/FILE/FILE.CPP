@@ -601,7 +601,7 @@ long cdecl Read_File(int handle, VOID *buf, unsigned long bytes)
 		filedata = &FileDataPtr[fileindex];
 
 		if (filedata->Size) {
-			bytes = MIN((unsigned long)filedata->Size - FileHandleTable[handle].Pos, bytes);
+			bytes = MIN((unsigned long)filedata->Size - FileHandleTable[handle].Pos, (unsigned long)bytes);
 		}
 	}
 
@@ -623,7 +623,7 @@ long cdecl Read_File(int handle, VOID *buf, unsigned long bytes)
 				**	Read in a chunk of file data.
 				*/
 				Hard_Error_Occured = 0;
-				number = (long)FILEREAD(doshandle, buf, MIN(bytes, IO_CHUNK_SIZE));
+				number = (long)FILEREAD(doshandle, buf, MIN((long)bytes, (long)IO_CHUNK_SIZE));
 
 				/*
 				** if a hard error occurs, read its copy on a different directory
@@ -757,7 +757,7 @@ long cdecl Write_File(int handle, VOID const *buf, unsigned long bytes)
 		/*
 		**	Write out one block of data.
 		*/
-		outbytes = FILEWRITE(doshandle, (void*)buf, MIN((long)bytes, IO_CHUNK_SIZE));
+		outbytes = FILEWRITE(doshandle, (void*)buf, MIN((long)bytes, (long)IO_CHUNK_SIZE));
 
 		/*
 		**	Reduce the bytes remaining to output counter and adjust the

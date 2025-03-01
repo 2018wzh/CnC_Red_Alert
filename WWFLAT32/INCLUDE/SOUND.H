@@ -44,7 +44,7 @@
 /*
 **	Maximum number of sound effects that may run at once.
 */
-#define	MAX_SFX		4
+#define	MAX_SFX		5
 
 /*
 ** Size of temp HMI low memory staging buffer.

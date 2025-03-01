@@ -261,6 +261,9 @@ class GraphicViewPortClass {
 		GraphicBufferClass	*GraphicBuff;			// related graphic buff
 };
 
+class BitmapClass;
+class TPoint2D;
+
 /*=========================================================================*/
 /* GraphicBufferClass - A GraphicBuffer refers to an actual instance of an	*/
 /*		allocated buffer.  The GraphicBuffer may be drawn to directly 			*/

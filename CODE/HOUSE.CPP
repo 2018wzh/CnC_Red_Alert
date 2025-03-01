@@ -4361,7 +4361,8 @@ COORDINATE HouseClass::Find_Build_Location(BuildingClass * building) const
 	**	Determine the average zone strengths for the base. This value is
 	**	used to determine what zones are considered under or over strength.
 	*/
-	for (ZoneType z = ZONE_NORTH; z < ZONE_COUNT; z++) {
+	ZoneType z;
+	for (z = ZONE_NORTH; z < ZONE_COUNT; z++) {
 		zoneinfo.AntiAir += ZoneInfo[z].AirDefense;
 		zoneinfo.AntiArmor += ZoneInfo[z].ArmorDefense;
 		zoneinfo.AntiInfantry += ZoneInfo[z].InfantryDefense;
@@ -4475,7 +4476,8 @@ void HouseClass::Recalc_Center(void)
 		int y = 0;
 		int count = 0;
 
-		for (int index = 0; index < Buildings.Count(); index++) {
+		int index;
+		for (index = 0; index < Buildings.Count(); index++) {
 			BuildingClass const * b = Buildings.Ptr(index);
 
 			if (b != NULL && !b->IsInLimbo && (HouseClass *)b->House == this && b->Strength > 0) {
@@ -4761,7 +4763,8 @@ int HouseClass::Expert_AI(void)
 	*/
 	UrgencyType urgency[STRATEGY_COUNT];
 
-	for (StrategyType strat = STRATEGY_FIRST; strat < STRATEGY_COUNT; strat++) {
+	StrategyType strat;
+	for (strat = STRATEGY_FIRST; strat < STRATEGY_COUNT; strat++) {
 		urgency[strat] = URGENCY_NONE;
 
 		switch (strat) {
@@ -5802,7 +5805,8 @@ int HouseClass::AI_Unit(void)
 		**	Build a list of the maximum of each type we wish to produce. This will be
 		**	twice the number required to fill all teams.
 		*/
-		for (int index = 0; index < Teams.Count(); index++) {
+		int index;
+		for (index = 0; index < Teams.Count(); index++) {
 			TeamClass * tptr = Teams.Ptr(index);
 			if (tptr != NULL) {
 				TeamTypeClass const * team = tptr->Class;
@@ -5876,7 +5880,8 @@ int HouseClass::AI_Unit(void)
 
 		int counter[UNIT_COUNT];
 		int total = 0;
-		for (UnitType index = UNIT_FIRST; index < UNIT_COUNT; index++) {
+		UnitType index;
+		for (index = UNIT_FIRST; index < UNIT_COUNT; index++) {
 			UnitTypeClass const * utype = &UnitTypeClass::As_Reference(index);
 			if (Can_Build(utype, ActLike) && utype->Type != UNIT_HARVESTER) {
 				if (utype->PrimaryWeapon != NULL) {
@@ -5934,7 +5939,8 @@ int HouseClass::AI_Vessel(void)
 		**	Build a list of the maximum of each type we wish to produce. This will be
 		**	twice the number required to fill all teams.
 		*/
-		for (int index = 0; index < Teams.Count(); index++) {
+		int index;
+		for (index = 0; index < Teams.Count(); index++) {
 			TeamClass * tptr = Teams.Ptr(index);
 			if (tptr) {
 				TeamTypeClass const * team = tptr->Class;
@@ -6044,7 +6050,8 @@ int HouseClass::AI_Infantry(void)
 		**	Build a list of the maximum of each type we wish to produce. This will be
 		**	twice the number required to fill all teams.
 		*/
-		for (int index = 0; index < Teams.Count(); index++) {
+		int index;
+		for (index = 0; index < Teams.Count(); index++) {
 			TeamClass * tptr = Teams.Ptr(index);
 			if (tptr != NULL) {
 				TeamTypeClass const * team = tptr->Class;
@@ -6703,7 +6710,8 @@ void HouseClass::Recalc_Attributes(void)
 	**	routine. This allows the filling in process to not worry about
 	**	old existing values.
 	*/
-	for (int index = 0; index < Houses.Count(); index++) {
+	int index;
+	for (index = 0; index < Houses.Count(); index++) {
 		HouseClass * house = Houses.Ptr(index);
 
 		if (house != NULL) {

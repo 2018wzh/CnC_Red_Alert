@@ -664,8 +664,9 @@ void Show_Who_Was_Responsible (void)
 	*/
 	memset (PaletteLUT, 1, sizeof (PaletteLUT));
 	int pcolor = PCOLOR_GREEN;
+	int index;
 
-	for (int index = 0; index < 6; index++) {
+	for (index = 0; index < 6; index++) {
 		PaletteLUT[ColorRemaps[pcolor].FontRemap[10+index]] =0;
 	}
 	//PaletteLUT[ColorRemaps[pcolor].BrightColor] = 0;

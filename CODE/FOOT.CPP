@@ -658,7 +658,8 @@ int FootClass::Mission_Hunt(void)
 #if(0)
 #ifdef FIXIT_CSII	//	checked - ajw 9/28/98
 	if (What_Am_I() == RTTI_INFANTRY && *(InfantryClass *)this == INFANTRY_GENERAL && House->Class->House==HOUSE_UKRAINE && Scen.Scenario==47) {
-		for(int index=0; index < Buildings.Count(); index++) {
+		int index;
+		for(index=0; index < Buildings.Count(); index++) {
 			if(Buildings.Ptr(index)->IsOwnedByPlayer) {
 				Assign_Target(Buildings.Ptr(index)->As_Target());
 				break;
@@ -1418,7 +1419,9 @@ void FootClass::Per_Cell_Process(PCPType why)
 			*/
 			int x = Cell_X(Coord_Cell(Coord));
 			int y = Cell_Y(Coord_Cell(Coord));
-			for (int index = 0; index < Map.MapCellWidth; index++) {
+			int index;
+
+			for (index = 0; index < Map.MapCellWidth; index++) {
 				trigger = Map[XY_Cell(index+Map.MapCellX, y)].Trigger;
 				if (trigger != NULL) {
 					if (trigger->Class->Event1.Event == TEVENT_CROSS_HORIZONTAL || (trigger->Class->EventControl != MULTI_ONLY && trigger->Class->Event2.Event == TEVENT_CROSS_HORIZONTAL)) {

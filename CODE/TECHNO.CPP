@@ -4685,7 +4685,8 @@ void TechnoClass::Base_Is_Attacked(TechnoClass const * enemy)
 	** Loop through the infantry looking for those who are capable of going
 	** on a rescue mission.
 	*/
-	for (int index = 0; index < Infantry.Count() && desired > 0; index++) {
+	int index;
+	for (index = 0; index < Infantry.Count() && desired > 0; index++) {
 	 	InfantryClass * infantry = Infantry.Ptr(index);
 		if (infantry != NULL && infantry->Owner() == Owner()) {
 
@@ -4856,7 +4857,8 @@ void TechnoClass::Base_Is_Attacked(TechnoClass const * enemy)
 		** Sort the defenders by value, this doesn't take very long and will
 		** help the closest defenders to respond.
 		*/
-		for (int lp = 0; lp < count - 1; lp ++) {
+		int lp;
+		for (lp = 0; lp < count - 1; lp ++) {
 			for (int lp2 = lp + 1; lp2 < count; lp2++) {
 				if (value[lp] < value[lp2]) {
 

@@ -190,7 +190,8 @@ static FootClass * _Create_Group(TeamTypeClass const * teamtype)
 	for (int index = 0; index < teamtype->ClassCount; index++) {
 		TechnoTypeClass const * tclass = teamtype->Members[index].Class;
 
-		for (int sub = 0; sub < teamtype->Members[index].Quantity; sub++) {
+		int sub;
+		for (sub = 0; sub < teamtype->Members[index].Quantity; sub++) {
 			ScenarioInit++;
 			FootClass * temp = (FootClass *)tclass->Create_One_Of(HouseClass::As_Pointer(teamtype->House));
 			ScenarioInit--;
@@ -487,7 +488,8 @@ bool Do_Reinforcements(TeamTypeClass const * teamtype)
 			**	Could not unlimbo at location specified so find an adjacent location that it can
 			**	be unlimboed at. If this fails, then abort the whole placement process.
 			*/
-			for (FacingType adj = FACING_N; adj < FACING_COUNT; adj++) {
+			FacingType adj;
+			for (adj = FACING_N; adj < FACING_COUNT; adj++) {
 				CELL trycell = Adjacent_Cell(newcell, adj);
 				if (!Map.In_Radar(trycell) && object->Can_Enter_Cell(trycell, adj) == MOVE_OK) {
 					newcell = trycell;
@@ -658,7 +660,8 @@ int Create_Air_Reinforcement(HouseClass * house, AircraftType air, int number, M
 	** Loop through the number of objects we are supposed to create and
 	** 	create and place them on the map.
 	*/
-	for (int sub = 0; sub < number; sub++) {
+	int sub;
+	for (sub = 0; sub < number; sub++) {
 
 		/*
 		** Create one of the required objects.  If this fails we could have

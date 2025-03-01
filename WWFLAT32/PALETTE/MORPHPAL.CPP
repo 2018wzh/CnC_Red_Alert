@@ -80,6 +80,7 @@ PRIVATE WORD cdecl Palette_To_Palette(VOID *src_palette, VOID *dst_palette, ULON
 VOID cdecl Morph_Palette (VOID *src_pal, VOID *dst_pal, UWORD delay,
 	VOID (*callback) (VOID) )
 {
+#if 0 // mango - appears to be broken
 	WORD	result;
 	ULONG	pal_start = TickCount.Time();
 	VOID   (*cb_ptr) ( VOID ) ;	// callback function pointer
@@ -103,6 +104,8 @@ VOID cdecl Morph_Palette (VOID *src_pal, VOID *dst_pal, UWORD delay,
 			}
 		}
 	}
+
+#endif
 
 	return;
 

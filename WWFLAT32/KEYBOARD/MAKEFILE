@@ -98,7 +98,7 @@ C_CMD	  	= wcc386
 CPP_CMD	  	= wpp386
 LIB_CMD	  	= wlib
 LINK_CMD  	= wlink
-ASM_CMD	  	= tasm32
+ASM_CMD	  	= tasm
 
 #---------------------------------------------------------------------------
 # Include & library paths
@@ -177,7 +177,10 @@ keyireal.ibn: keyireal.obj
 keyireal.obj:	keyireal.asm
 	tasm /zn /la /ml /m2 keyireal.asm
 
-keyboard.obj: keyireal.ibn keyboard.asm
+# mango - made this more explicit as wmake keeps insisting on adding in 
+# the ibn file as an arg!
+keyboard.obj: keyboard.asm keyireal.ibn
+	$(ASM_CMD) $(ASM_CFG) $[@
 
 #---------------------------------------------------------------------------
 # Create the test directory and make it.

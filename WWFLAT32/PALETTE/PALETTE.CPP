@@ -157,6 +157,7 @@ VOID cdecl Set_Palette_Color(VOID *palette, WORD color, VOID *data)
  *=========================================================================*/
 VOID Fade_Palette_To(VOID *palette1, UWORD delay, VOID (*callback)() )
 {
+#if 0 // mango - this is broken
 	BOOL	changed;	// Flag that palette has changed this tick.
 	WORD	jump;		// Gun values to jump per palette set.
 	ULONG	timer;		// Tick count timer used for timing.
@@ -221,7 +222,7 @@ VOID Fade_Palette_To(VOID *palette1, UWORD delay, VOID (*callback)() )
 			(*cb_ptr)();
 		}
 	} while (changed);
-
+#endif
 }	/* end of Fade_Palette_To */
 
 

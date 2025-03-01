@@ -27,8 +27,24 @@ An environment to build is currently provided which works in dosbox-x. To build,
 	./launch.sh
 	[inside dosbox]
 	env.bat
+	cd wwflat32
+	wmake
+	cd ..\code
 	wmake
 ```
+
+For the windows build, the following should suffice:
+
+```
+	./launch.sh
+	[inside dosbox]
+	env.bat
+	cd win32lib
+	wmake WIN32=1
+	cd ..\code
+	wmake WIN32=1
+```
+
 
 Please note that to keep things simple, the current focus of this repository it to build the DOS version in the current version of OpenWatcom, which requires a few changes as the modern compiler is slightly more strict in places. Also the codebase seems to require a lot of manual tweaking to get the correct build state (such as the CD DOS version not building with the expansion pack changes).
 

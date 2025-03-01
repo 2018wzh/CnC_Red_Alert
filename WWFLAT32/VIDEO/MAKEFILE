@@ -180,8 +180,10 @@ vesareal.ibn: vesareal.obj
 vesareal.obj:	vesareal.asm
 	tasm /zn /la /ml /m2 vesareal.asm
 
-vesahook.obj: vesareal.ibn vesahook.asm
-
+# mango - made this more explicit as wmake keeps insisting on adding in 
+# the ibn file as an arg!
+timera.obj: vesareal.asm vesareal.ibn
+	$(ASM_CMD) $(ASM_CFG) $[@
 
 
 #---------------------------------------------------------------------------

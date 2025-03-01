@@ -185,8 +185,10 @@ timereal.ibn: timereal.obj
 timereal.obj:	timereal.asm
 	tasm /zn /la /ml /m2 timereal.asm
 
-timera.obj: timereal.ibn timera.asm
-
+# mango - made this more explicit as wmake keeps insisting on adding in 
+# the ibn file as an arg!
+timera.obj: timera.asm timereal.ibn
+	$(ASM_CMD) $(ASM_CFG) $[@
 
 #---------------------------------------------------------------------------
 # Create the test directory and make it.

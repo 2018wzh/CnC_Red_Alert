@@ -2335,7 +2335,11 @@ BulletClass * VesselClass::Fire_At(TARGET target, int which)
 	assert(IsActive);
 
 	if (*this == VESSEL_CARRIER) {
+		#ifdef FIXIT_CARRIER
 		Arm = CarrierLaunchDelay;
+		#else
+		Arm = 0; // mango - this this should be ok
+		#endif
 		FootClass * passenger = Detach_Object();
 		if (passenger != NULL) {
 			ScenarioInit++;

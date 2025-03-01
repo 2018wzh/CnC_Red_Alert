@@ -1245,7 +1245,9 @@ bool Select_Game(bool fade)
 						**	Network (IPX): start a new network game.
 						*/
 						case GAME_IPX:
+							#ifdef WIN32
 							WWDebugString ("RA95 - Game type is IPX.\n");
+							#endif
 							/*
 							** Init network system & remote-connect
 							*/
@@ -1268,7 +1270,9 @@ bool Select_Game(bool fade)
 //							}
 
 #endif	//WINSOCK_IPX
+								#ifdef WIN32
 							WWDebugString ("RA95 - About to call Init_Network.\n");
+							#endif
 							if (Session.Type == GAME_IPX && Init_Network() && Remote_Connect()) {
 #ifdef FIXIT_VERSION_3
 								Options.ScoreVolume = Options.MultiScoreVolume;

@@ -1461,7 +1461,7 @@ void SessionClass::Read_Scenario_Descriptions (void)
 
 #else	//WIN32
 
-#error	What? You think you can still build the DOS version after all this time?
+//#error	What? You think you can still build the DOS version after all this time? // mango - YES WE CAN!
 
 	char name_buffer[128];
 	char digest_buffer[32];

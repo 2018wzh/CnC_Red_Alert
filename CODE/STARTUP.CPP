@@ -698,7 +698,7 @@ int main(int argc, char * argv[])
 	return(EXIT_SUCCESS);
 }
 
-
+#ifdef WIN32
 /* Initialize DirectDraw and surfaces */
 bool InitDDraw(void)
 	{
@@ -822,7 +822,7 @@ bool InitDDraw(void)
 
 	return true;
 	}
-
+#endif
 
 /***********************************************************************************************
  * Prog_End -- Cleans up library systems in prep for game exit.                                *

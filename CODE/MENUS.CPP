@@ -519,12 +519,12 @@ int Main_Menu(unsigned long )
 
 	int starty = d_dialog_y + (12 * RESFACTOR);
 
-//#if defined(WIN32) && !defined(INTERNET_OFF) // Denzil 5/1/98 - No internet play
+#if defined(WIN32) && !defined(INTERNET_OFF) // Denzil 5/1/98 - No internet play
 //#ifndef FIXIT_VERSION_3
 	static int	max_buttons = 7;
-//#else
-//	static int	max_buttons = 6;
-//#endif
+#else
+	static int	max_buttons = 6;
+#endif
 
 //#if defined(MPEGMOVIE) // Denzil 6/26/98 Video settings
 //	max_buttons++;
@@ -695,11 +695,18 @@ int Main_Menu(unsigned long )
 	
 	buttons[0] = &expandbtn;
 	buttons[1] = &startbtn;
+	#if defined(WIN32) && !defined(INTERNET_OFF) // mango - fixed up
 	buttons[2] = &internetbutton;
 	buttons[3] = &loadbtn;
 	buttons[4] = &multibtn;
 	buttons[5] = &introbtn;
 	buttons[6] = &exitbtn;
+	#else
+	buttons[2] = &loadbtn;
+	buttons[3] = &multibtn;
+	buttons[4] = &introbtn;
+	buttons[5] = &exitbtn;
+	#endif
 #endif
 
 	buttons[curbutton]->Turn_On();

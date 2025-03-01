@@ -830,9 +830,11 @@ char const * Version_Name(void)
 	if (Is_Counterstrike_Installed ()){
 		strcat (buffer, "CS");
 	}
+#ifdef FIXIT_CSII
 	if (Is_Aftermath_Installed()) {
 		strcat (buffer, "AM");
 	}
+#endif
 
 #if(TEN)
 	strcat(buffer, "Ten");		// Ten version

@@ -5471,6 +5471,7 @@ const char* Game_Registry_Key()
  *=============================================================================================*/
 bool Is_Counterstrike_Installed (void)
 {
+#ifdef WIN32
 	//	ajw 9/29/98
 	static bool	bAlreadyChecked = false;
 	static bool bInstalled = false;
@@ -5491,9 +5492,10 @@ bool Is_Counterstrike_Installed (void)
 		bAlreadyChecked = true;
 	}
 	return bInstalled;
-
-//	RawFileClass file("EXPAND.MIX");
-//	return(file.Is_Available());
+#else
+	RawFileClass file("EXPAND.MIX");
+	return(file.Is_Available());
+#endif
 }
 
 #ifdef FIXIT_CSII	//	checked - ajw 9/28/98
@@ -5501,6 +5503,7 @@ bool Is_Counterstrike_Installed (void)
  *=============================================================================================*/
 bool Is_Aftermath_Installed (void)
 {
+#ifdef WIN32
 	//	ajw 9/29/98
 	static bool	bAlreadyChecked = false;
 	static bool bInstalled = false;
@@ -5521,9 +5524,10 @@ bool Is_Aftermath_Installed (void)
 		bAlreadyChecked = true;
 	}
 	return bInstalled;
-
-//	RawFileClass file("EXPAND2.MIX");
-//	return(file.Is_Available());
+#else
+	RawFileClass file("EXPAND2.MIX");
+	return(file.Is_Available());
+#endif
 }
 #endif
 

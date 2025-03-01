@@ -5473,8 +5473,8 @@ void TechnoClass::Draw_Pips(int x, int y, WindowNumberType window) const
 				}
 				CC_Draw_Shape(Class_Of().PipShapes, shape, x+index*3, y, window, SHAPE_CENTER|SHAPE_WIN_REL);
 			}
+#ifdef FIXIT_CSII	//	checked - ajw 9/28/98  mango - bad formatting
 		}
-#ifdef FIXIT_CSII	//	checked - ajw 9/28/98
 		/*
 		** Check if it's a Chrono tank, to show the recharge gauge.
 		*/

@@ -132,9 +132,9 @@ UnitTypeClass      ³   BuildingTypeClass      ³  VesselTypeClass
 #define RAWFILE_H
 #define MONOC_H
 
-#define	_MAX_NAME	_MAX_FNAME
-
 #endif
+
+#define _MAX_NAME   _MAX_FNAME // mango - this is needed
 
 
 /*

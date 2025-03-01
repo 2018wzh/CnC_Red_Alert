@@ -39,7 +39,7 @@
 /**********************************************************************
 **	Language control: define the desired language for this build.
 */
-//#define ENGLISH 1
+#define ENGLISH 1 // mango -this needs to be at least defined to build
 //#define FRENCH 1
 //#define GERMAN 1
 //#define SPAIN 1	(never used)
@@ -68,6 +68,9 @@
 #define MOVIE640
 
 
+#define MAX_PATH 260 // mango - need this define for conquer.cpp
+
+
 //#if (GERMAN | FRENCH)
 //#define	BOGUSCD
 //#endif
@@ -89,7 +92,8 @@
 
 #define	FIXIT_ANTS              // Adds Ant Units
 
-#define	FIXIT_CSII					// Adds Aftermath CounterStrike II units
+// mango - breaks DOS for now
+//#define	FIXIT_CSII					// Adds Aftermath CounterStrike II units
 //	ajw 9/28/98 - Note about FIXIT_CSII. Changes seem to have been made for Aftermath ("Counterstrike II") that: a) were
 //	bug fixes that should never be rolled back, b) change the nature of the game, at least in multi-player. This meant
 //	that the "Red Alert" executable ( == Counterstrike executable ) could no longer be built. Apparently, at the time,
@@ -101,11 +105,11 @@
 //	forever), and fixing the code so that the assumption "this is an Aftermath game" is no longer hard-coded, but can 
 //	change at runtime. (Which is what should have been done when Aftermath was created.)
 //	<This goes for the following three defines as well.>
-#define	FIXIT_CARRIER				// Adds Aftermath aircraft carrier
-#define	FIXIT_PHASETRANSPORT		// Adds Aftermath cloaking APC
+//#define	FIXIT_CARRIER				// Adds Aftermath aircraft carrier // mango - dependent on FIXIT_CSII
+//#define	FIXIT_PHASETRANSPORT		// Adds Aftermath cloaking APC // mango - dependent on FIXIT_CSII
 //	ajw - Discovered that engineer changing fields were specifically left out of aftrmath.ini, thus this has no effect.
 //	Engineer changes (and other game rule changes) are in mplayer.ini, which was loaded before aftermath-only mplayer games.
-#define	FIXIT_ENGINEER				// Adds Engineer rules.ini overrides
+// #define	FIXIT_ENGINEER				// Adds Engineer rules.ini overrides  // mango - this breaks the build somehow? TOFIX
 
 //#define	FIXIT_FAST_LOAD			// Enables faster INI loading
 
@@ -126,13 +130,13 @@
 #endif
 
 //	Denotes changes made for version 3 - reunification of all existing versions and undoing of Aftermath divergence. - ajw
-#define FIXIT_VERSION_3
-#define DVD
+// mango - this breaks dos build - #define FIXIT_VERSION_3
+// #define DVD // mango - breaks dos build
 
 // Define DVD to turn on RADVD additions/changes - Denzil
 #ifdef DVD
 //#define INTERNET_OFF
-#define MPEGMOVIE
+//#define MPEGMOVIE // mango - breaks dos build
 //#define MCIMPEG
 #endif
 

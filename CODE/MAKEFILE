@@ -315,7 +315,8 @@ OBJECTS = &
 	MPGSET.OBJ &
 	ICONLIST.OBJ &
 	SEDITDLG.OBJ &
-	BIGCHECK.OBJ 
+	BIGCHECK.OBJ &
+	GCL_STUB.OBJ
 
 
 # Files that are candidates for library submission,

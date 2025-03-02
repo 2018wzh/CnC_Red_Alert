@@ -1330,7 +1330,7 @@ static void Generate_Timing_Event(ConnManClass *net, int my_sent)
 			// multiple of the FrameSendRate.
 			//..................................................................
 			if (Session.CommProtocol == COMM_PROTOCOL_MULTI_E_COMP) {
-				ev.Data.FrameInfo.Delay = max( ((((resp_time / 8) +
+				ev.Data.FrameInfo.Delay = max<int>( ((((resp_time / 8) +
 					(Session.FrameSendRate - 1)) / Session.FrameSendRate) *
 					Session.FrameSendRate), (Session.FrameSendRate * 2) );
 			}
@@ -1340,14 +1340,14 @@ static void Generate_Timing_Event(ConnManClass *net, int my_sent)
 			//..................................................................
 			else {
 				if (Session.Type == GAME_MODEM || Session.Type == GAME_NULL_MODEM) {
-					ev.Data.FrameInfo.Delay = max( (resp_time / 8),
+					ev.Data.FrameInfo.Delay = max<int>( (resp_time / 8),
 						 MODEM_MIN_MAX_AHEAD );
 				} else if (Session.Type == GAME_IPX || Session.Type == GAME_INTERNET) {
-					ev.Data.FrameInfo.Delay = max( (resp_time / 8),
+					ev.Data.FrameInfo.Delay = max<int>( (resp_time / 8),
 						 NETWORK_MIN_MAX_AHEAD );
 				}
 				else if (Session.Type == GAME_TEN || Session.Type == GAME_MPATH) {
-					ev.Data.FrameInfo.Delay = max( (resp_time / 8),
+					ev.Data.FrameInfo.Delay = max<int>( (resp_time / 8),
 						 MODEM_MIN_MAX_AHEAD );
 				}
 			}

@@ -149,8 +149,6 @@ template<class T> inline T min(T value1, T value2)
 	}
 	return(value2);
 }
-int min(int, int);
-long min(long, long);
 
 template<class T> inline T max(T value1, T value2)
 {
@@ -159,8 +157,6 @@ template<class T> inline T max(T value1, T value2)
 	}
 	return(value2);
 }
-int max(int, int);
-long max(long, long);
 #endif
 
 template<class T> inline void swap(T &value1, T &value2)
@@ -169,8 +165,6 @@ template<class T> inline void swap(T &value1, T &value2)
 	value1 = value2;
 	value2 = temp;
 }
-int swap(int, int);
-long swap(long, long);
 
 template<class T> inline
 T Bound(T original, T minval, T maxval)
@@ -179,9 +173,6 @@ T Bound(T original, T minval, T maxval)
 	if (original > maxval) return(maxval);
 	return(original);
 }
-int Bound(signed int, signed int, signed int);
-unsigned Bound(unsigned, unsigned, unsigned);
-long Bound(long, long, long);
 
 template<class T>
 T _rotl(T X, int n)

@@ -289,7 +289,7 @@ int Test_Null_Modem( void )
 	Fancy_Text_Print(TXT_NONE,0,0,GadgetClass::Get_Color_Scheme(),TBLACK,TPF_6PT_GRAD | TPF_NOSHADOW);
 	Format_Window_String(buffer, SeenBuff.Get_Height(), width, height);
 
-	width = max(width, 50 * RESFACTOR);
+	width = max<int>(width, 50 * RESFACTOR);
 	width += 40 * RESFACTOR;
 	height += 60 * RESFACTOR;
 
@@ -622,7 +622,7 @@ static int Reconnect_Null_Modem( void )
 	Fancy_Text_Print(TXT_NONE,0,0,scheme,TBLACK,TPF_6PT_GRAD | TPF_NOSHADOW);
 	Format_Window_String(buffer, SeenBuff.Get_Height(), width, height);
 
-	width = max(width, 50 * RESFACTOR);
+	width = max<int>(width, 50 * RESFACTOR);
 	width += 40 * RESFACTOR;
 	height += 60 * RESFACTOR;
 
@@ -3285,7 +3285,7 @@ int Com_Scenario_Dialog(bool skirmish)
 		if ( Session.Options.AIPlayers > 7 ) {
 			Session.Options.AIPlayers = 7;
 		}
-		Session.Options.AIPlayers = max(Session.Options.AIPlayers, 1);
+		Session.Options.AIPlayers = max<int>(Session.Options.AIPlayers, 1);
 	}else{
 		if ( Session.Options.AIPlayers > 6 ) {
 			Session.Options.AIPlayers = 6;
@@ -4460,12 +4460,12 @@ oh_dear_its_a_label:
 		//
 		if (!skirmish) {
 			if (Session.CommProtocol == COMM_PROTOCOL_MULTI_E_COMP) {
-				Session.MaxAhead = max( ((((SendPacket.ScenarioInfo.ResponseTime / 8) +
+				Session.MaxAhead = max<int>( ((((SendPacket.ScenarioInfo.ResponseTime / 8) +
 					(Session.FrameSendRate - 1)) / Session.FrameSendRate) *
 					Session.FrameSendRate), (Session.FrameSendRate * 2)
 											);
 			} else {
-				Session.MaxAhead = max( (SendPacket.ScenarioInfo.ResponseTime / 8),
+				Session.MaxAhead = max<int>( (SendPacket.ScenarioInfo.ResponseTime / 8),
 											  MODEM_MIN_MAX_AHEAD );
 			}
 		}
@@ -6084,11 +6084,11 @@ int Com_Show_Scenario_Dialog(void)
 						// to execute a packet
 						//
 						if (Session.CommProtocol == COMM_PROTOCOL_MULTI_E_COMP) {
-							Session.MaxAhead = max( ((((ReceivePacket.ScenarioInfo.ResponseTime / 8) +
+							Session.MaxAhead = max<int>( ((((ReceivePacket.ScenarioInfo.ResponseTime / 8) +
 								(Session.FrameSendRate - 1)) / Session.FrameSendRate) *
 								Session.FrameSendRate), (Session.FrameSendRate * 2) );
 						} else {
-							Session.MaxAhead = max( (ReceivePacket.ScenarioInfo.ResponseTime / 8),
+							Session.MaxAhead = max<int>( (ReceivePacket.ScenarioInfo.ResponseTime / 8),
 														  MODEM_MIN_MAX_AHEAD );
 						}
 

@@ -2953,7 +2953,7 @@ static int Net_Join_Dialog(void)
 		//	a chance to get to the other system.  If he doesn't get our ACK,
 		// he'll be waiting the whole time we load MIX files.
 		//.....................................................................
-		i = max(Ipx.Global_Response_Time() * 2, 60);
+		i = max<int>(Ipx.Global_Response_Time() * 2, 60);
 		starttime = TickCount;
 		while (TickCount - starttime < i) {
 			Ipx.Service();
@@ -2966,7 +2966,7 @@ static int Net_Join_Dialog(void)
 	//------------------------------------------------------------------------
 //	Ipx.Set_Timing (Ipx.Global_Response_Time() + 2, -1,
 //		Ipx.Global_Response_Time() * 4);
-	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max (120, Ipx.Global_Response_Time () * 8));
+	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max<int>(120, Ipx.Global_Response_Time () * 8));
 
 
 	//------------------------------------------------------------------------
@@ -4718,7 +4718,7 @@ static int Net_New_Dialog(void)
 				//	an OK; force a wait longer than 1 second (to give all players
 				//	a chance to know about this new guy)
 				//...............................................................
-				i = max(Ipx.Global_Response_Time() * 2, 60);
+				i = max<int>(Ipx.Global_Response_Time() * 2, 60);
 				while (TickCount - ok_timer < i) {
 					Ipx.Service();
 				}
@@ -5043,12 +5043,12 @@ static int Net_New_Dialog(void)
 		//	  value, 4 more to convert from ticks to frames)
 		//.....................................................................
 		if (Session.CommProtocol == COMM_PROTOCOL_MULTI_E_COMP) {
-			Session.MaxAhead = max( ((((Ipx.Global_Response_Time() / 8) +
+			Session.MaxAhead = max<int>( ((((Ipx.Global_Response_Time() / 8) +
 				(Session.FrameSendRate - 1)) / Session.FrameSendRate) *
 				Session.FrameSendRate), (Session.FrameSendRate * 2) );
 		}
 		else {
-			Session.MaxAhead = max( (Ipx.Global_Response_Time() / 8),
+			Session.MaxAhead = max<int>( (Ipx.Global_Response_Time() / 8),
 										  NETWORK_MIN_MAX_AHEAD );
 		}
 
@@ -5141,7 +5141,7 @@ static int Net_New_Dialog(void)
 	//	of what our retry delta & timeout should be.
 	//------------------------------------------------------------------------
 	//Ipx.Set_Timing (Ipx.Global_Response_Time() + 2, -1, Ipx.Global_Response_Time() * 4);
-	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max (120, Ipx.Global_Response_Time () * 8));
+	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max<int>(120, Ipx.Global_Response_Time () * 8));
 
 	//------------------------------------------------------------------------
 	//	Clear all lists, but NOT the Games or Players vectors.
@@ -5637,7 +5637,7 @@ void Net_Reconnect_Dialog(int reconn, int fresh, int oldest_index,
 		sprintf(buf2,Text_String(TXT_TIME_ALLOWED), timeval + 1);
 		buf3 = Text_String(TXT_PRESS_ESC);
 
-		w = max(String_Pixel_Width(buf1),String_Pixel_Width(buf2));
+		w = max<int>(String_Pixel_Width(buf1),String_Pixel_Width(buf2));
 
 #ifdef FIXIT_VERSION_3
 		char szNewCancelMessage[ 300 ];
@@ -5645,16 +5645,16 @@ void Net_Reconnect_Dialog(int reconn, int fresh, int oldest_index,
 
 		if( Session.Type == GAME_INTERNET && pWolapi && pWolapi->GameInfoCurrent.bTournament )
 		{
-			w = max(String_Pixel_Width(szNewCancelMessage), w);	// * RESFACTOR;		why was it ever multiplied by this!!!?
+			w = max<int>(String_Pixel_Width(szNewCancelMessage), w);	// * RESFACTOR;		why was it ever multiplied by this!!!?
 			w += (d_margin * 12);
 		}
 		else
 		{
-			w = max(String_Pixel_Width(buf3), w) * RESFACTOR;
+			w = max<int>(String_Pixel_Width(buf3), w) * RESFACTOR;
 			w += (d_margin * 5);
 		}
 #else
-		w = max(String_Pixel_Width(buf3), w) * RESFACTOR;
+		w = max<int>(String_Pixel_Width(buf3), w) * RESFACTOR;
 		w += (d_margin * 5);
 #endif
 
@@ -6455,7 +6455,7 @@ static int Net_Fake_New_Dialog(void)
 					//	an OK; force a wait longer than 1 second (to give all players
 					//	a chance to know about this new guy)
 					//...............................................................
-					i = MAX(Ipx.Global_Response_Time() * 2, 60*2);
+					i = max<int>(Ipx.Global_Response_Time() * 2, 60*2);
 					while (TickCount - ok_timer < i) {
 						Ipx.Service();
 					}
@@ -6682,12 +6682,12 @@ static int Net_Fake_New_Dialog(void)
 		//	  value, 4 more to convert from ticks to frames)
 		//.....................................................................
 		if (Session.CommProtocol == COMM_PROTOCOL_MULTI_E_COMP) {
-			Session.MaxAhead = MAX( ((((Ipx.Global_Response_Time() / 8) +
+			Session.MaxAhead = max<int>( ((((Ipx.Global_Response_Time() / 8) +
 				(Session.FrameSendRate - 1)) / Session.FrameSendRate) *
 				Session.FrameSendRate), (Session.FrameSendRate * 2) );
 		}
 		else {
-			Session.MaxAhead = MAX( (Ipx.Global_Response_Time() / 8),
+			Session.MaxAhead = max<int>( (Ipx.Global_Response_Time() / 8),
 										  NETWORK_MIN_MAX_AHEAD );
 		}
 
@@ -6773,7 +6773,7 @@ static int Net_Fake_New_Dialog(void)
 	//	a chance to get to the other system.  If he doesn't get our ACK,
 	// he'll be waiting the whole time we load MIX files.
 	//.....................................................................
-	i = MAX(Ipx.Global_Response_Time() * 2, 60*2);
+	i = max<int>(Ipx.Global_Response_Time() * 2, 60*2);
 	int starttime = TickCount;
 	while (TickCount - starttime < i) {
 		Ipx.Service();
@@ -6785,7 +6785,7 @@ static int Net_Fake_New_Dialog(void)
 	//------------------------------------------------------------------------
 	//Ipx.Set_Timing (Ipx.Global_Response_Time() + 2, -1,
 	//	Ipx.Global_Response_Time() * 4);
-	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max (120, Ipx.Global_Response_Time () * 8));
+	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max<int>(120, Ipx.Global_Response_Time () * 8));
 
 	Clear_Listbox(&playerlist);
 
@@ -7662,7 +7662,7 @@ static int Net_Fake_Join_Dialog(void)
 		//	a chance to get to the other system.  If he doesn't get our ACK,
 		// he'll be waiting the whole time we load MIX files.
 		//.....................................................................
-		i = MAX(Ipx.Global_Response_Time() * 2, 60*2);
+		i = max<int>(Ipx.Global_Response_Time() * 2, 60*2);
 		starttime = TickCount;
 		while (TickCount - starttime < i) {
 			Ipx.Service();
@@ -7675,7 +7675,7 @@ static int Net_Fake_Join_Dialog(void)
 	//------------------------------------------------------------------------
 	//Ipx.Set_Timing (Ipx.Global_Response_Time() + 2, -1,
 	//	Ipx.Global_Response_Time() * 4);
-	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max (120, Ipx.Global_Response_Time () * 8));
+	Ipx.Set_Timing (Ipx.Global_Response_Time () + 2, (unsigned long) -1, max<int>(120, Ipx.Global_Response_Time () * 8));
 
 	//------------------------------------------------------------------------
 	//	Clear all lists, but NOT the Games & Players vectors.

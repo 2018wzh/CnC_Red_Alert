@@ -440,9 +440,6 @@ VQ_LIBS = &
 	vqa32wp.lib &
 	vqm32wp.lib
 
-GCL_LIBS = &
-	gclfr3s.lib
-
 MEMCHECK_LIBS = &
 	MCA3S.LIB
 
@@ -464,7 +461,7 @@ MEMCHECK_LIBS = &
 !ifdef WIN32
 all: ra95.exe
 !else
-all: game.dat
+all: ..\run\game.dat
 !endif
 
 
@@ -497,12 +494,12 @@ CWSTUB.EXE: CWSTUB.OBJ
 
 #############################################################################
 # Build the EXE
-game.dat: $(WWOBJ)\tech.lib $(WWOBJ)\jshell.lib $(OBJECTS) $(LINKFILE) $(TECHFILE)
+..\run\game.dat: $(WWOBJ)\tech.lib $(WWOBJ)\jshell.lib $(OBJECTS) $(LINKFILE) $(TECHFILE)
 	-Echo "dos.exe" linking phase.
         ..\watcom\binw\wlink name ..\run\dos.exe @$(LINKFILE)
 	-Echo Binding phase.
-        -..\watcom\binw\wstrip -n -q ..\run\dos.exe ..\run\temp.tmp
-	-..\watcom\4gwbind ..\watcom\4gwpro.exe ..\run\temp.tmp ..\run\game.dat -vmon
+        -..\watcom\binw\wstrip -n -q ..\run\dos.exe ..\run\game.exe
+        - copy ..\run\game.exe ..\run\game.dat
 # -copy ..\run\game.dat C:\westwood\redalert
 # -copy ..\run\game.dat C:\westwood\ra
 # -copy ..\run\dos.exe C:\westwood\redalert
@@ -525,7 +522,7 @@ ra95.exe: $(WWOBJ)\tech.lib $(WWOBJ)\jshell.lib $(OBJECTS) $(LINKFILE) mpgdll.li
 # This creates the linker command file for the DOS version.
 conquer.lnk : makefile
 	%create $^@
-	%append $^@ system dos4g
+	%append $^@ system causeway
 	%append $^@ option stack=128k
 	%append $^@ option redefsok
 	%append $^@ option quiet
@@ -538,7 +535,6 @@ conquer.lnk : makefile
 	for %index in ($(OBJECTS))  do %append $^@ file $(WWOBJ)\%index
 	for %index in ($(PROJ_LIBS)) do %append $^@ library $(WWFLAT)\lib\%index
 	for %index in ($(VQ_LIBS)) do %append $^@ library ..\vq\lib\%index
-	for %index in ($(GCL_LIBS)) do %append $^@ library ..\gcl510\w10\%index
 #	%append $^@ debug watcom all
 
 

@@ -8,7 +8,10 @@
 
 // Stubs
 
+extern "C"
+{
 void (*_AbortModemFunctionPtr)(int);
+}
 
 void PortClose(PORT* port) {
     if (port) {

@@ -36,6 +36,9 @@ Specifically the following files from Turbo Assembler are needed:
 	TDSTRIP.EXE
 ```
 
+WARNING: 
+
+
 An environment to build is currently provided which works in dosbox-x. To build, place openwatcom in `watcom`, and `tasm.exe` in the bin folder, then:
 
 ```
@@ -45,7 +48,13 @@ An environment to build is currently provided which works in dosbox-x. To build,
 	cd wwflat32
 	prepare.bat
 	wmake
-	cd ..\code
+	cd ..\vq
+	env.bat
+	cd vqa32
+	wmake
+	cd ..\vqm32
+	wmake
+	cd ..\..\code
 	wmake
 ```
 

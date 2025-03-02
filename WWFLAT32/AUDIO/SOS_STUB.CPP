@@ -97,3 +97,89 @@ void cdecl sosDIGIDrv_End(void) {}
 #ifdef __cplusplus
 }
 #endif
+
+
+
+#pragma pack(4)
+WORD     _sosDIGIData_Start;
+WORD     _sosDIGIData_End;
+WORD     _wSOSDriverLinear[256];
+WORD     _wSOSTimerLinear[256];
+LPSTR    _lpSOSDriver[256];
+LPSTR    _lpSOSTimer[256];
+LPSTR    _lpSOSDriverCS[256];
+LPSTR    _lpSOSTimerCS[256];
+BOOL     _wSOSDriverLoaded[256];
+BOOL     _wSOSTimerLoaded[256];
+BOOL     _wSOSDriverInitialized[256];
+WORD     _wSOSOutputRate[256];
+WORD     _wSOSDMABuffersize[256];
+LONG     _dwSOSDMABufferPhysical[256];
+LPSTR    _lpSOSDMABuffer[256];
+BOOL     _wTimerUsed;
+VOID ( far *_lpSOSFillHandler[256] )( VOID );
+WORD     _wSOSTimerType[256];
+WORD     _wSOSDriverType[256];
+_SOS_SAMPLE far * _lpSOSSampleList[256][ _MAX_VOICES ];
+LPWORD      _lpSOSDMAIrqCount[256];
+LPWORD      _lpSOSDMAFillCount[256];
+WORD        _wSOSTmrNextCount;
+VOID ( interrupt far *_lpSOSOldTimer )( VOID );
+WORD     _wSOSDriverID[256];
+_SOS_CAPABILITIES _sSOSDriverCaps[256];
+WORD        _wSOSDMAPortList[256];
+BYTE        _bSOSDMAChannel[256];
+_SOS_INIT_DRIVER     _sSOSDIGIInitDriver[256];
+BYTE  _pSOSDriverPath[256];
+BYTE  _pSOSTempDriverPath[256];
+WORD  _wTIMERValue;
+VOID ( far * _lpTIMEREvents[256] )( VOID );
+WORD _wTIMEREventRate[256];
+WORD _dwTIMEREventFraction[256];
+WORD _dwTIMEREventFractionCurrent[256];
+BYTE  _bSOSMIDITimerSongHandler[256];
+BYTE  _bSOSMIDISongHandle;
+WORD  _wSOSTimerMemHandle[256];
+WORD  _wSOSDriverMemHandle[256];
+WORD  _wSOSRealSeg[256];
+
+_FILEHEADER    _sDETFileHeader;
+_DRIVERHEADER  _sDETDriverHeader;
+_FILEHEADER    sLOADFileHeader;
+_DRIVERHEADER  sLOADDriverHeader;
+BOOL           _wDETInitialized;
+WORD           _wDETLinear;
+LPSTR          _lpDETDriverBuffer;
+LPSTR          _lpDETDriverBufferCS;
+WORD           _hDETFile;
+DWORD          _dwDETDriverIndex;
+WORD           _wDETDriverIndexCur;
+WORD           _wDETMemHandle;
+LPSOSDEVICECAPS _lpDETDeviceCaps;
+_SOS_CAPABILITIES _sDETCaps;
+PSTR _pSOSErrorStrings[256];
+BOOL _wSOSBufferAllocated[256];
+BOOL _wSOSSystemInitialized;
+VDS_STRUCT _sSOSVDSInfo;
+_SOS_FILL_INFO _sSOSFillInfo;
+WORD    _wSOSTimerEventIndex;
+WORD  _wSOSTimerEntered;
+WORD  _wSOSDriverSize[256];
+WORD  _wSOSTimerSize[256];
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+WORD  _sosDIGIData1_Start;
+WORD  _sosDIGIData1_End;
+WORD  _sosDIGIData2_Start;
+WORD  _sosDIGIData2_End;
+BYTE  _bTIMERInstalled;
+BYTE  _bTIMERDPMI;
+WORD  wDetectPort;
+WORD  wDetectIRQ;
+WORD  wDetectDMA;
+WORD  wDetectParam;
+#ifdef __cplusplus
+}
+#endif

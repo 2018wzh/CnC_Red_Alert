@@ -334,7 +334,7 @@ class FrameTimerClass
 
 
 #ifndef WIN32
-extern bool TimerSystemOn;
+extern BOOL TimerSystemOn;
 extern "C" {
 	long Get_System_Tick_Count(void);
 	long Get_User_Tick_Count(void);

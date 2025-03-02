@@ -8,6 +8,8 @@
 
 // Stubs
 
+void (*_AbortModemFunctionPtr)(int);
+
 void PortClose(PORT* port) {
     if (port) {
         port->status = 0;

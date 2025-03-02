@@ -132,7 +132,7 @@ path_exe = .\
 
 CC_CMD   = wcc386
 CCP_CMD  = wpp386
-ASM_CMD  = tasm32
+ASM_CMD  = tasm
 LINK_CMD = wlink
 LIB_CMD  = wlib
 

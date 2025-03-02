@@ -48,7 +48,7 @@
 # VERIFY ENVIROMENT
 #----------------------------------------------------------------------------
 
-!ifndef %PRJ || %PRJVCS || %WATCOM
+!ifndef %PRJ || %WATCOM
 !error Environment not configured.
 !endif
 
@@ -61,6 +61,9 @@
 
 PRJNAME = vqa32wp
 PRJDIR  = $(%PRJ)\VQA32
+
+PRJINCLUDE = $(%PRJ)\INCLUDE\VQA32
+VQMINCLUDE = $(%PRJ)\INCLUDE\VQM32
 
 OBJECTS = &
 	config.obj &
@@ -92,14 +95,14 @@ INCLUDEPATH = $(%PRJ)\INCLUDE;$(%INCLUDE)
 INCLUDEPATH = $(%PRJ)\INCLUDE;$(%WATCOM)\H
 !endif
 
-path_c   = .\
-path_cpp = .\
-path_h   = .\
-path_asm = .\
-path_i   = .\
+path_c   = .
+path_cpp = .
+path_h   = .
+path_asm = .
+path_i   = .
 path_obj = .\O
 path_lib = $(%PRJ)\LIB
-path_exe = .\
+path_exe = .
 
 #----------------------------------------------------------------------------
 # IMPLICIT RULE EXTENSIONS AND PATHS
@@ -108,14 +111,14 @@ path_exe = .\
 .EXTENSIONS :
 .EXTENSIONS : .exe .lib .obj .c .cpp .asm .h .i
 
-.c : $(path_c)
-.cpp : $(path_cpp)
-.h : $(path_h)
-.asm : $(path_asm)
-.i : $(path_i)
-.obj : $(path_obj)
-.lib : $(path_lib)
-.exe : $(path_exe)
+.c:  $(path_c)
+.cpp:  $(path_cpp)
+.h:  $(path_h)
+.asm:  $(path_asm)
+.i:  $(path_i)
+.obj:  $(path_obj)
+.lib:  $(path_lib)
+.exe: $(path_exe)
 
 #----------------------------------------------------------------------------
 # Tools/commands & configurations
@@ -123,12 +126,12 @@ path_exe = .\
 
 CC_CMD   = wcc386
 CCP_CMD  = wpp386
-ASM_CMD  = tasm32
+ASM_CMD  = tasm
 LINK_CMD = wlink
 LIB_CMD  = wlib
 
 CC_OPTS  = -i$(INCLUDEPATH) -j -zp1 -5s -mf -oaeilrt -s -zq
-ASM_OPTS = /t /m /w+ /jJUMPS /ml /p /z /i$(%PRJ)\INCLUDE\VQM32 /dPHARLAP_TNT=0
+ASM_OPTS = /t /m /w+ /jJUMPS /ml /p /z /i$(PRJINCLUDE) /i$(VQMINCLUDE) /dPHARLAP_TNT=0
 LIB_OPTS = /b /c /q
 LINK_CFG = $(PRJNAME).lnk
 

@@ -75,7 +75,7 @@
  * PRIVATE DECLARATIONS
  *-------------------------------------------------------------------------*/
 
-int compfunc(void const *ptr1, void const *ptr2);
+int compfunc_mixsubblock(void const *ptr1, void const *ptr2);
 
 
 /****************************************************************************
@@ -195,7 +195,7 @@ long OpenMixEntry(MIXHandle *mix, char *name)
 	/* Search for the specified file in the mix file. */
 	key.CRC = Calculate_CRC(name, strlen(name));
 	block = (MIXSubBlock *)bsearch(&key, &mix->Entries[0], mix->Count,
-			sizeof(MIXSubBlock), compfunc);
+			sizeof(MIXSubBlock), compfunc_mixsubblock);
 
 	/* If the block exists for the requested filename. */
 	if (block != NULL) {
@@ -240,7 +240,7 @@ long OpenMixEntry(MIXHandle *mix, char *name)
 *
 ****************************************************************************/
 
-int compfunc(void const *ptr1, void const *ptr2) 
+int compfunc_mixsubblock(void const *ptr1, void const *ptr2) 
 {
 	if (((MIXSubBlock *)ptr1)->CRC < ((MIXSubBlock *)ptr2)->CRC) return -1;
 	if (((MIXSubBlock *)ptr1)->CRC > ((MIXSubBlock *)ptr2)->CRC) return 1;

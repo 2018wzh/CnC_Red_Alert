@@ -39,38 +39,3 @@
 
 #include	"function.h"
 
-/*
-**	These member functions for the CCPtr class cannot be declared inside the
-**	class definition since they could refer to other objects that themselves
-**	contain CCPtr objects. The recursive nature of this type of declaration
-**	is not handled by Watcom, hence the body declaration is dislocated here.
-*/
-template<class T>
-CCPtr<T>::CCPtr(T * ptr) : ID(-1)
-{
-	if (ptr != NULL) {
-		ID = ptr->ID;
-	}
-}
-
-
-/***********************************************************************************************
- * CCPtr<T>::operator > -- Greater than comparison operator.                                   *
- *                                                                                             *
- *    This will compare two pointer value to see if the left hand value is greater than the    *
- *    right hand. The values are compared by comparing based on their Name() functions.        *
- *                                                                                             *
- * INPUT:   rvalue   -- The right handle CCPtr value.                                          *
- *                                                                                             *
- * OUTPUT:  Is the left hand value greater than the right hand value?                          *
- *                                                                                             *
- * WARNINGS:   The values pointed to by CCPtr must have a Name() function defined.             *
- *                                                                                             *
- * HISTORY:                                                                                    *
- *   07/06/1996 JLB : Created.                                                                 *
- *=============================================================================================*/
-template<class T>
-bool CCPtr<T>::operator > (CCPtr<T> const & rvalue) const
-{
-	return (stricmp((*this)->Name(), rvalue->Name()) > 0);
-}

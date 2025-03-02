@@ -447,7 +447,7 @@ DataClass::~DataClass(void)
  * HISTORY:                                                                                    *
  *   08/06/1994 JLB : Created.                                                                 *
  *=============================================================================================*/
-int compfunc(const void *ptr1, const void *ptr2)
+int compfunc_dataclass(const void *ptr1, const void *ptr2)
 {
 	DataClass const *obj1 = *(DataClass const **)ptr1;
 	DataClass const *obj2 = *(DataClass const **)ptr2;
@@ -519,7 +519,7 @@ void DataClass::Process_Output(char const *outname)
 		**	Next, sort the data objects so that a binary search on CRC values
 		**	can be used for file retrieval.
 		*/
-		qsort(array, Count, sizeof(array[0]), compfunc);
+		qsort(array, Count, sizeof(array[0]), compfunc_dataclass);
 
 		/*
 		**	Output the header section of the data file.  This contains

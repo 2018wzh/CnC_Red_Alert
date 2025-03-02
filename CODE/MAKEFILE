@@ -122,6 +122,7 @@ CC_CFG += /zq                           # Operate quietly.
 CC_CFG += /ze
 
 ASM_CFG = /i$(WWFLAT)\INCLUDE           # Include directory.
+ASM_CFG += /i$(WWOBJ)                   # Object directory (for IBN).
 ASM_CFG += /zd                          # Debugging information line numbers.
 ASM_CFG += /t                           # Quiet operation.
 ASM_CFG += /m                           # Allow multiple passes.
@@ -716,12 +717,12 @@ PKZIP.DAT: makefile .SYMBOLIC
 #--------------------------------------------------------------------------
 $(WWOBJ)\ipxreal.ibn: $(WWOBJ)\ipxreal.obj
 	%create $^*.rsp
-	%append $^*.rsp $(WWOBJ)\$^&.obj
-	%append $^*.rsp $(WWOBJ)\$^&.exe
-	%append $^*.rsp $(WWOBJ)\$^&.map
-	utils\tlink @$^*.rsp
-	utils\tdstrip $(WWOBJ)\ipxreal.exe
-	utils\ebn $(WWOBJ)\ipxreal.exe
+	%append $^*.rsp $^*.obj
+	%append $^*.rsp $^*.exe
+	%append $^*.rsp $^*.map
+	tlink @$^*.rsp
+	tdstrip $(WWOBJ)\ipxreal.exe
+	ebn $(WWOBJ)\ipxreal.exe
 
 $(WWOBJ)\ipxreal.obj:	ipxreal.asm
 	utils\tasm /zn /la /ml /m2 ipxreal.asm, $(WWOBJ)\ipxreal.obj

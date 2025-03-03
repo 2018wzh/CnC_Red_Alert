@@ -56,14 +56,16 @@ LANGUAGE=ENGLISH
 WWFLAT=..\win32lib
 WWOBJ=obj\win32\$(LANGUAGE)
 LINKFILE=win95.lnk
-CC=..\watcom\binnt\wpp386
-LIB=..\watcom\binnt\wlib
+CC=wpp386
+LIB=wlib
+WWVQ=..\winvq
 !else
 WWFLAT=..\wwflat32
 WWOBJ=obj\dos
 LINKFILE=conquer.lnk
-CC=..\watcom\binw\wpp386
-LIB=..\watcom\binw\wlib
+CC=wpp386
+LIB=wlib
+WWVQ=..\vq
 !endif
 
 #---------------------------------------------------------------------------
@@ -83,53 +85,21 @@ LIB=..\watcom\binw\wlib
 # Compiler and assembler flags.
 #===========================================================================
 !ifdef WIN32
-CC_CFG = /d0                            # No debugging information	( else use /d1 )
-CC_CFG += /DWIN32=1
-CC_CFG += /D_WIN32
-CC_CFG += /DWOLAPI_INTEGRATION
-CC_CFG += /DWINSOCK_IPX
+CC_CFG = @CFGW32\RELEASE\CC.RSP
 CC_CFG += /D$(LANGUAGE)=1
-CC_CFG += /i=..\dxsdk\inc
-CC_CFG += /i=..\watcom\h\nt                # NT include directory.
-CC_CFG += /i=..\watcom\H                   # Normal Watcom include directory.
-CC_CFG += /i=$(WWFLAT)\INCLUDE          # Normal library include directory.
-CC_CFG += /i=..\winvq\include           # Includes player (VQ) directory.
-CC_CFG += /bt=NT
-CC_CFG += /otxan
-CC_CFG += /5r                           # Pentium optimized register calling conventions.
+ASM_CFG = @CFGW32\RELEASE\ASM.RSP
 !else
-CC_CFG = /d1                            # Partial debug (line numbers only)
-CC_CFG += /i=..\watcom\H                   # Normal Watcom include directory.
-CC_CFG += /i=$(WWFLAT)\INCLUDE          # Normal library include directory.
-CC_CFG += /i=..\vq\include              # Includes player (VQ) directory.
-CC_CFG += /i=..\vq                      # ...
-CC_CFG += /DDOS4G                       # Must be defined for Greenleaf
-CC_CFG += /5s                           # Pentium optimized stack calling conventions.
-CC_CFG += /DGF_WATCOM_S                 # Must be defined for Greenleaf with /3s
-CC_CFG += /bt=DOS
+CC_CFG = @CFG\RELEASE\CC.RSP
+ASM_CFG = @CFG\RELEASE\ASM.RSP
 !endif
 
-CC_CFG += /DTRUE_FALSE_DEFINED=1  /D__STDC_VERSION__=199901L
+CC_CFG += /i=$(WWVQ)                      # ...
+CC_CFG += /i=$(WWFLAT)\INCLUDE;$(%INCLUDE) # Normal library include directory.
 CC_CFG += /i=..\gcl510\H                # Includes Greenleaf headers.
-CC_CFG += /of+                          # Generate traceable stack frames.
-CC_CFG += /zp1                          # Pack structures on byte boundary.
-CC_CFG += /s                            # Remove stack check calls.
-CC_CFG += /j                            # char is now signed.
 CC_CFG += /fh=$(WWOBJ)\conquer.pch      # Use precompiled headers.
-CC_CFG += /fhq
-CC_CFG += /w3                           # Most warnings enabled.
-CC_CFG += /ri                           # char and shorts are returned as int.
-CC_CFG += /zq                           # Operate quietly.
-CC_CFG += /ze
 
-ASM_CFG = /i$(WWFLAT)\INCLUDE           # Include directory.
+ASM_CFG += /i$(WWFLAT)\INCLUDE           # Include directory.
 ASM_CFG += /i$(WWOBJ)                   # Object directory (for IBN).
-ASM_CFG += /zd                          # Debugging information line numbers.
-ASM_CFG += /t                           # Quiet operation.
-ASM_CFG += /m                           # Allow multiple passes.
-ASM_CFG += /w+                          # Enable maximum warnings.
-ASM_CFG += /jJUMPS                      # Enable jump optimizations.
-ASM_CFG += /ml                          # Case sensitivity on code.
 
 
 #---------------------------------------------------------------------------
@@ -153,7 +123,7 @@ ASM_CFG += /ml                          # Case sensitivity on code.
 
 .asm.obj:
 	echo Assembling $<
-	utils\tasm $(ASM_CFG) $<, $(WWOBJ)\$^.
+	tasm $(ASM_CFG) $<, $(WWOBJ)\$^.
 
 #---------------------------------------------------------------------------
 # Object modules.
@@ -399,7 +369,7 @@ OBJECTS += 2KEYFBUF.OBJ &
 	STATS.OBJ &
 	PACKET.OBJ &
 	KEY.OBJ &
-	FIELD.OBJ
+	FIELD.OBJ &
 	W95TRACE.OBJ &
 	COMINIT.OBJ &
 	DIBFILE.OBJ &
@@ -723,10 +693,10 @@ $(WWOBJ)\ipxreal.ibn: $(WWOBJ)\ipxreal.obj
 	ebn $(WWOBJ)\ipxreal.exe
 
 $(WWOBJ)\ipxreal.obj:	ipxreal.asm
-	utils\tasm /zn /la /ml /m2 ipxreal.asm, $(WWOBJ)\ipxreal.obj
+	tasm /zn /la /ml /m2 ipxreal.asm, $(WWOBJ)\ipxreal.obj
 
 ipxprot.obj: $(WWOBJ)\ipxreal.ibn ipxprot.asm
-	utils\tasm $(ASM_CFG) ipxprot.asm, $(WWOBJ)\ipxprot.obj
+	tasm $(ASM_CFG) ipxprot.asm, $(WWOBJ)\ipxprot.obj
 #	copy $(WWOBJ)\ipxprot.obj d:obj /U
 
 

@@ -73,6 +73,8 @@
 #include <vqm32\font.h>
 #endif
 
+#include <vqm32\video.h>
+
 /*---------------------------------------------------------------------------
  * PRIVATE DECLARATIONS
  *-------------------------------------------------------------------------*/
@@ -86,7 +88,7 @@ char VerTag[] = {"$VER$VQAPlay 2.6 (07/07/95) 32Bit"};
 char ReqTag[] = {"$REQ$VQA32 Version 2.37 & VQM32 Version 2.11 or better."};
 
 /* Prototypes */
-void main(long argc, char **argv);
+int main(long argc, char **argv);
 static void Usage(long showall);
 static void Options(long argc, char *argv[], VQAConfig *config);
 static char *Find_File_Name(long argc, char *argv[], char *desired_ext);
@@ -137,7 +139,7 @@ int __far HardErr_Handler(unsigned deverror, unsigned errcode,
 *
 ****************************************************************************/
 
-void main(long argc, char **argv)
+int main(long argc, char **argv)
 {
 	VQAConfig     myconfig;
 	VQAStatistics stats;
@@ -274,7 +276,7 @@ void main(long argc, char **argv)
 	/*-------------------------------------------------------------------------
 	 * RESTORE DISPLAY TO TEXT AND PRINT STATISTICS
 	 *-----------------------------------------------------------------------*/
-	SetVideoMode(TEXT);
+	SetVideoMode(TEXT_VIDEO);
 
 	#if(CAPTIONS)
 	if (myconfig.CapFont != NULL) free(myconfig.CapFont);
@@ -289,6 +291,7 @@ void main(long argc, char **argv)
 	}
 
 	exit(0);
+	return 0;
 }
 
 

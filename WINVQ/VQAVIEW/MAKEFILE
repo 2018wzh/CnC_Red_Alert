@@ -48,16 +48,19 @@
 #* .xxx:	= full pathname where various file types live		   			 *
 #*                                                                         *
 #***************************************************************************
+#----------------------------------------------------------------------------
+# VERIFY ENVIROMENT
+#----------------------------------------------------------------------------
 
-#---------------------------------------------------------------------------
-# Verify user's environment
-#---------------------------------------------------------------------------
-!ifndef %WIN32LIB
-!error WIN32LIB Environment var not configured.
+.OPTIMIZE
+.ERASE
+
+!ifndef %PRJ || %WATCOM
+!error Environment not configured.
 !endif
 
-!ifndef %WIN32VCS
-!error WIN32VCS Environment var not configured.
+!ifndef %WIN32LIB
+!error WIN32LIB Environment var not configured.
 !endif
 
 !ifndef %WATCOM
@@ -73,9 +76,9 @@
 # PROJ_DIR = directory containing source & objects
 #---------------------------------------------------------------------------
 PROJ_NAME	= VQAVIEW
-PROJ_DIR	= $(%BLADE)\VQA\VQAVIEW
-LIB_DIR		= $(%WIN32LIB)\LIB
-VQA_LIB_DIR = $(%BLADE)\VQA\LIB
+PROJ_DIR	= $(%PRJ)\VQAVIEW
+LIB_DIR	= $(%WIN32LIB)\LIB
+VQA_LIB_DIR = $(%PRJ)\LIB
 
 !include $(%WIN32LIB)\project.cfg
 
@@ -120,9 +123,9 @@ VQA_LIBS = &
 .cpp:	$(PROJ_DIR)
 .h:   	$(PROJ_DIR)
 .obj:	$(PROJ_DIR)
-.lib:	$(%WIN32LIB)\lib;$(VQA_LIB_DIR)
+.lib:	$(LIB_DIR);$(VQA_LIB_DIR)
 .exe:	$(PROJ_DIR)
-.rc:		$(PROJ_DIR)
+.rc:	$(PROJ_DIR)
 .res:	$(PROJ_DIR)
 
 
@@ -130,10 +133,10 @@ VQA_LIBS = &
 # Tools/commands
 #---------------------------------------------------------------------------
 C_CMD	  	= wcc386
-CPP_CMD	  	= wpp386
-LIB_CMD	  	= wlib
+CPP_CMD	= wpp386
+LIB_CMD	= wlib
 LINK_CMD  	= wlink
-ASM_CMD	  	= tasm
+ASM_CMD	= tasm
 RC_CMD		= wrc
 
 #---------------------------------------------------------------------------
@@ -143,8 +146,8 @@ RC_CMD		= wrc
 # BCDIR
 #---------------------------------------------------------------------------
 
-LIBPATH	  	= $(%WIN32LIB)\LIB;$(%WATCOM)\LIB386\NT;$(BLADE)\VQA\LIB
-INCLUDEPATH	= $(PROJ_DIR);$(%WIN32LIB)\INCLUDE;$(%WATCOM)\H;$(PROJ_DIR)\..;$(PROJ_DIR)\..\VQA32
+LIBPATH	= $(%WIN32LIB)\LIB;$(%WATCOM)\LIB386\NT;$(%PRJ)\LIB
+INCLUDEPATH	= $(PROJ_DIR);$(%WIN32LIB)\INCLUDE;$(%WATCOM)\H;$(PRJ);$(PRJ)\VQA32
 
 #---------------------------------------------------------------------------
 # Implicit rules

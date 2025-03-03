@@ -39,6 +39,14 @@
 #
 #****************************************************************************
 
+#----------------------------------------------------------------------------
+# VERIFY ENVIROMENT
+#----------------------------------------------------------------------------
+
+!ifndef %PRJ || %WATCOM
+!error Environment not configured.
+!endif
+
 .OPTIMIZE
 .ERASE
 
@@ -46,10 +54,10 @@
 # PROJECTS DEPENDENT MACROS
 #----------------------------------------------------------------------------
 
-PRJ		= ..
 PRJNAME = vqm32wp
-PRJDIR  = $(PRJ)\VQM32
-WATCOM	= c:\watcom
+PRJDIR  = $(%PRJ)\VQM32
+
+PRJINCLUDE = ..\
 
 OBJECTS = &
 	iff.obj &
@@ -90,25 +98,25 @@ OBJECTS = &
 #----------------------------------------------------------------------------
 
 !ifdef %LIB
-LIBPATH = $(PRJ)\LIB;$(%LIB)
+LIBPATH = $(%PRJ)\LIB;$(%LIB)
 !else
-LIBPATH = $(PRJ)\LIB;$(WATCOM)\LIB386
+LIBPATH = $(%PRJ)\LIB;$(%WATCOM)\LIB386
 !endif
 
 !ifdef %INCLUDE
-INCLUDEPATH = $(PRJ)\INCLUDE;$(%INCLUDE)
+INCLUDEPATH = $(%PRJ)\INCLUDE;$(%INCLUDE);$(PRJINCLUDE)
 !else
-INCLUDEPATH = $(PRJ)\INCLUDE;$(WATCOM)\H
+INCLUDEPATH = $(%PRJ)\INCLUDE;$(%WATCOM)\H;$(PRJINCLUDE)
 !endif
 
-path_c   = .\
-path_cpp = .\
-path_h   = .\
-path_asm = .\
-path_i   = .\
+path_c   = .
+path_cpp = .
+path_h   = .
+path_asm = .
+path_i   = .
 path_obj = .\O
-path_lib = $(PRJ)\LIB
-path_exe = .\
+path_lib = $(%PRJ)\LIB
+path_exe = .
 
 #----------------------------------------------------------------------------
 # IMPLICIT RULE EXTENSIONS AND PATHS
@@ -136,8 +144,9 @@ ASM_CMD  = tasm
 LINK_CMD = wlink
 LIB_CMD  = wlib
 
-CC_OPTS  = -i$(INCLUDEPATH) -j -zp1 -5r -mf -oaeilrt -s -zq
-ASM_OPTS = /t /m /w+ /jJUMPS /ml /p /z /dPHARLAP_TNT=0
+CC_OPTS  = @$(%PRJ)\CFG\RELEASE\CC.RSP -i$(%PRJ) 
+ASM_OPTS = @$(%PRJ)\CFG\RELEASE\ASM.RSP /i$(%PRJ) 
+
 LIB_OPTS = /b /c /q
 LINK_CFG = $(PRJNAME).lnk
 

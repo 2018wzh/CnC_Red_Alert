@@ -2393,7 +2393,7 @@ Mono_Set_Cursor(0,0);
 
 
 
-#ifdef WIN32
+#ifdef WIN32_DISABLED
 	if (Debug_MotionCapture) {
 		static void ** _array = 0;
 		static int _sequence = 0;

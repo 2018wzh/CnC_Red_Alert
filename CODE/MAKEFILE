@@ -102,6 +102,7 @@ CC_CFG = /d1                            # Partial debug (line numbers only)
 CC_CFG += /i=..\watcom\H                   # Normal Watcom include directory.
 CC_CFG += /i=$(WWFLAT)\INCLUDE          # Normal library include directory.
 CC_CFG += /i=..\vq\include              # Includes player (VQ) directory.
+CC_CFG += /i=..\vq                      # ...
 CC_CFG += /DDOS4G                       # Must be defined for Greenleaf
 CC_CFG += /5s                           # Pentium optimized stack calling conventions.
 CC_CFG += /DGF_WATCOM_S                 # Must be defined for Greenleaf with /3s

@@ -217,7 +217,8 @@ BOOL Cache_New_Icon (int icon_index, void *icon_ptr)
  *=============================================================================================*/
 void Invalidate_Cached_Icons (void)
 {
-	for (int i=0 ; i<MAX_CACHED_ICONS ; i++){
+	int i;
+	for (i=0 ; i<MAX_CACHED_ICONS ; i++){
 		CachedIcons[i].Uncache_It();
 	}
 

@@ -33,7 +33,6 @@
 #*                                                                         *
 #* Required environment variables:					   								*
 #* WIN32LIB		= your root WIN32LIB path					   							*
-#* WIN32VCS		= root directory for wwlib version control archive	   		*
 #* COMPILER		= your Watcom installation path				   					*
 #*									   															*
 #* Required changes to makefile:					   									*
@@ -51,10 +50,6 @@
 #---------------------------------------------------------------------------
 !ifndef %WIN32LIB
 !error WIN32LIB Environment var not configured.
-!endif
-
-!ifndef %WIN32VCS
-!error WIN32VCS Environment var not configured.
 !endif
 
 !ifndef %WATCOM
@@ -159,8 +154,8 @@ $(LIB_DIR)\$(PROJ_NAME).lib: $(OBJECTS) objects.lbc
 	 copy *.inc $(%WIN32LIB)\include
 	 copy *.cpp $(%WIN32LIB)\srcdebug
 	 copy *.asm $(%WIN32LIB)\srcdebug
+	 $(LIB_CMD) $(LIB_CFG) $^@ @objects.lbc
 	 copy *.lib $(%WIN32LIB)\lib
-	$(LIB_CMD) $(LIB_CFG) $^@ @objects.lbc
 
 #---------------------------------------------------------------------------
 # Objects now have a link file which is NOT generated everytime.  Instead
@@ -177,7 +172,6 @@ objects.lbc : $(OBJECTS)
 test:
 	mkdir test
 	cd test
-	copy $(%WWVCS)\$(PROJ_NAME)\test\vcs.cfg
 	update
 	wmake
 	cd ..

@@ -68,7 +68,8 @@ WWKeyboardClass::WWKeyboardClass(void)
 	//
 	memset(VKRemap, 0, 256);
 	memset(AsciiRemap, 0, 2048);
-	for (short lp = 31; lp < 255; lp ++) {
+	short lp;
+	for (lp = 31; lp < 255; lp ++) {
 		if (isprint(lp)) {
 			int vk_key = VkKeyScan((unsigned char)lp);
 			if (vk_key > 0 && vk_key < 2048) {

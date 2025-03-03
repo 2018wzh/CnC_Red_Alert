@@ -33,7 +33,6 @@
 #*                                                                         *
 #* Required environment variables:					   								*
 #* WIN32LIB		= your root WWFLAT path					   							*
-#* WIN32VCS		= root directory for wwlib version control archive	   		*
 #* COMPILER		= your Watcom installation path				   					*
 #*									   															*
 #* Required changes to makefile:					   									*
@@ -55,13 +54,6 @@ WIN32LIB=.
 !else
 WIN32LIB=$(%WIN32LIB)
 !endif
-
-!ifndef %WIN32VCS
-WIN32VCS=.
-!else
-WIN32VCS=$(%WIN32VCS)
-!endif
-
 
 #===========================================================================
 # User-defined section: list each library in this macro
@@ -161,7 +153,7 @@ LIB_UPDATE =	&
 #		copies from the archive
 #---------------------------------------------------------------------------
 !include $(WIN32LIB)\project.cfg
-LIB_CMD = ..\code\watcom\binnt\wlib
+LIB_CMD = wlib
 VCS_UPDATE = update
 
 #---------------------------------------------------------------------------
@@ -236,15 +228,9 @@ install_dirs: .SYMBOLIC
 	mkdir lib   
 	mkdir srcdebug
 	mkdir tools
-	cd tools  
-	copy $(%WWVCS)\tools\vcs.cfg
-	$(VCS_UPDATE) 
+	cd tools
 	cd..   
-	copy $(%WWVCS)\vcs.cfg
-	$(VCS_UPDATE) 
 	cd example 
-	copy $(%WWVCS)\example\vcs.cfg 
-	$(VCS_UPDATE) 
 	cd ..
 
 
@@ -256,8 +242,6 @@ $(LIB_INSTALL):	.SYMBOLIC
 	echo Installing $^&...
 	md $^&
 	cd $^&
-	copy $(%WWVCS)\$^&\vcs.cfg 
-	$(VCS_UPDATE) 
 	copy *.h ..\include
 	copy *.inc ..\include
 	cd ..
@@ -280,7 +264,6 @@ update: $(LIB_UPDATE) .SYMBOLIC
 $(LIB_UPDATE): .SYMBOLIC
 	echo Updating $^&...
 	cd $^&
-	$(VCS_UPDATE) 
 	copy *.h ..\include
 	copy *.inc ..\include 
 	cd ..

@@ -88,7 +88,7 @@
 #include <rawfile.h>
 #include <file.h>
 #include "profile.h"
-#include <vdmdbg.h>
+//#include <vdmdbg.h>
 #include <timer.h>
 
 #define PROFILE
@@ -205,7 +205,7 @@ void __cdecl Start_Profiler (void)
 		** Old profile system - just set up a timer to monitor the global variable based on
 		** the last place __PRO was called from
 		*/
-		ProfilerEvent = timeSetEvent (1000/PROFILE_RATE , 1 , (void CALLBACK (UINT,UINT,DWORD,DWORD,DWORD))Old_Profiler_Callback , 0 , TIME_PERIODIC);
+		// TOFIX ProfilerEvent = timeSetEvent (1000/PROFILE_RATE , 1 , Old_Profiler_Callback , 0 , TIME_PERIODIC);
 #else
 		/*
 		** New profile system - create a second thread that will do all the profiling

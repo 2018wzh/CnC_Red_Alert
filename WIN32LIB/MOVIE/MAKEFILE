@@ -42,8 +42,8 @@
 # Working values depending on what target executable will be created.
 #---------------------------------------------------------------------------
 OBJ=obj
-CC=..\..\WAT11\BINNT\wpp386
-LIB=..\..\WATCOM\BINNT\wlib
+CC=wpp386
+LIB=wlib
 
 #---------------------------------------------------------------------------
 # Path macros: one path for each file type.

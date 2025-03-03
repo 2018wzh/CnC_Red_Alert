@@ -36,28 +36,33 @@
 #ifndef WWLIB32_H
 #define WWLIB32_H
 
-#include <wwstd.h>
-
-#include <buffer.h>
-#include <descmgmt.h>
-#include <file.h>
-#include <font.h>
 #include <gbuffer.h>
-#include <vbuffer.h>
+#include <wwstd.h>
+#include <drawbuff.h>
+#include <buffer.h>
+#include <font.h>
 #include <iff.h>
-#include <filepcx.h>
-#include <keyboard.h>
-#include <mcgaprim.h>
 #include <misc.h>
 #include <mono.h>
+#include <tile.h>
+#include <wwmem.h>
+#include <keyboard.h>
+#include <mouse.h>
+#include <file.h>
+#include <rawfile.h>
+
+#include <audio.h>
+#include <dipthong.h>
 #include <palette.h>
 #include <playcd.h>
 #include <shape.h>
 #include <timer.h>
-#include <video.h>
+#include <ww_win.h>
 #include <wsa.h>
-#include <wwmem.h>
+#include <profile.h>
 
 
 
 #endif // WWLIB32_H
+
+

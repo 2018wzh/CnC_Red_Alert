@@ -36,10 +36,22 @@ Specifically the following files from Turbo Assembler are needed:
 	TDSTRIP.EXE
 ```
 
-WARNING: 
 
+An environment to build is currently provided which works in dosbox-x. To build, first place openwatcom in `watcom`, and `tasm.exe` in the bin folder.
 
-An environment to build is currently provided which works in dosbox-x. To build, place openwatcom in `watcom`, and `tasm.exe` in the bin folder, then:
+Firstly, you need to build the "EBN.EXE" tool to build the .IBN files which can be done as follows:
+
+```
+	./launch.sh
+	[inside dosbox]
+	env.bat
+	cd extras
+	make.bat
+```
+
+## Compiling - DOS version
+
+Run the following commands:
 
 ```
 	./launch.sh
@@ -58,7 +70,15 @@ An environment to build is currently provided which works in dosbox-x. To build,
 	wmake
 ```
 
-For the windows build, the following should suffice:
+Assuming compilation is successful, you should have a `GAME.EXE` in the `RUN` folder which is the main executable. `GAME.DAT` is also provided but currently this has not been tested with the launcher, so for now simply using `GAME.EXE` should suffice.
+
+To play, simply put the executable in the game directory and launch!
+
+## Compiling - Windows version
+
+NOTE: windows currently doesn't build.
+
+Run the the following commands:
 
 ```
 	./launch.sh
@@ -67,18 +87,14 @@ For the windows build, the following should suffice:
 	cd win32lib
 	prepare.bat
 	wmake WIN32=1
+	cd ..\winvq
+	env.bat
+	cd vqa32
+	wmake
+	cd ..\vqm32
+	wmake WIN32=1
 	cd ..\code
 	wmake WIN32=1
-```
-
-You also need to build the "EBN.EXE" tool to build the .IBN files which can be done as follows:
-
-```
-	./launch.sh
-	[inside dosbox]
-	env.bat
-	cd extras
-	make.bat
 ```
 
 Please note that to keep things simple, the current focus of this repository it to build the DOS version in the current version of OpenWatcom, which requires a few changes as the modern compiler is slightly more strict in places. Also the codebase seems to require a lot of manual tweaking to get the correct build state (such as the CD DOS version not building with the expansion pack changes).
@@ -88,12 +104,7 @@ To use the compiled binaries, you must own the game. The C&C Ultimate Collection
 
 ## Contributing
 
-This repository will not be accepting contributions (pull requests, issues, etc). If you wish to create changes to the source code and encourage collaboration, please create a fork of the repository under your GitHub user/organization space.
-
-
-## Support
-
-This repository is for preservation purposes only and is archived without support. 
+Contributions are welcome, though the current focus is just to get the standard game executables building for a mostly vanilla experience.
 
 
 ## License

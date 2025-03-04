@@ -1703,7 +1703,7 @@ void WolapiObject::DoFindPage()
 	SimpleEditDlgClass* pFindPageDlg;
 
 	//	Ask user for user desired.
-	Fancy_Text_Print( TXT_NONE, 0, 0, TBLACK, TBLACK, TPF_TEXT );	//	Required before String_Pixel_Width() call, for god's sake.
+	Fancy_Text_Print( TXT_NONE, 0, 0, GadgetClass::Get_Color_Scheme(), TBLACK, TPF_TEXT );	//	Required before String_Pixel_Width() call, for god's sake.
 	pFindPageDlg = new SimpleEditDlgClass( 400, TXT_WOL_PAGELOCATE, TXT_WOL_USERNAMEPROMPT, WOL_NAME_LEN_MAX );
 	pFindPageDlg->SetButtons( TXT_WOL_LOCATE, Text_String( TXT_CANCEL ), TXT_WOL_PAGE );
 	bPump_In_Call_Back = true;
@@ -2319,8 +2319,9 @@ bool WolapiObject::EnterLevel_Games()
 
 	//	Create entry for our lobbies at the top.
 	bool bFound = false;
+	int i;
 	//	(There are actually 2 additional game types at the end of GameTypeInfos - for ws icon and wwonline icon.)
-	for( int i = 0; i < nGameTypeInfos - 2; i++ )
+	for( i = 0; i < nGameTypeInfos - 2; i++ )
 	{
 		if( GameTypeInfos[ i ].iGameType == GAME_TYPE )
 		{
@@ -3382,7 +3383,8 @@ void RemapDIBToPalette( HPALETTE hPal, const char* pDIB )		//	Note: pDIB is trea
 	qNewPalette[0] = GetNearestPaletteIndex( hPal, RGB( 0, 0, 0 ) );
 	pRGBEntry++;
 
-	for( int i = 1; i != 256; i++ )
+	int i;
+	for( i = 1; i != 256; i++ )
 	{
 		qNewPalette[i] = GetNearestPaletteIndex( hPal, RGB( pRGBEntry->rgbRed, pRGBEntry->rgbGreen, pRGBEntry->rgbBlue ) );
 //		if( iIndex == 1 )

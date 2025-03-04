@@ -95,6 +95,7 @@ typedef int bool;
 typedef void VOID;
 #endif
 
+#ifndef WIN32
 typedef  int            BOOL;
 typedef  unsigned int   UINT;
 typedef  char  BYTE;
@@ -103,5 +104,6 @@ typedef  signed short       WORD;
 typedef  unsigned short      UWORD;
 typedef  signed long       LONG;
 typedef  unsigned long      ULONG;
+#endif
 
 #endif

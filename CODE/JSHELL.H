@@ -141,7 +141,6 @@ template<class T> inline T operator ~(T t1)
 	return((T)(~(int)t1));
 }
 
-#ifndef WIN32
 template<class T> inline T min(T value1, T value2)
 {
 	if (value1 < value2) {
@@ -157,7 +156,6 @@ template<class T> inline T max(T value1, T value2)
 	}
 	return(value2);
 }
-#endif
 
 template<class T> inline void swap(T &value1, T &value2)
 {

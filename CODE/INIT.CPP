@@ -545,7 +545,8 @@ bool Select_Game(bool fade)
 	**	Init multiplayer game scores.  Let Wins accumulate; just init the current
 	** Kills for this game.  Kills of -1 means this player didn't play this round.
 	*/
-	for (int i = 0 ; i < MAX_MULTI_GAMES; i++) {
+	int i;
+	for (i = 0 ; i < MAX_MULTI_GAMES; i++) {
 		Session.Score[i].Kills[Session.CurGame] = -1;
 	}
 

@@ -388,7 +388,8 @@ void IconListClass::Draw_Entry( int index, int x, int y, int width, int selected
 	int xText = x;
 	//	ajw If I end up needing to use SHAPEs for icons, figure out shape width here and offset x.
 	bool bIconsPresent = false;
-	for( int iIcon = 0; iIcon != 3; iIcon++ )
+	int iIcon;
+	for( iIcon = 0; iIcon != 3; iIcon++ )
 		if( pExtras->pIcon[ iIcon ] && pExtras->IconKind[ iIcon ] == ICON_DIB )
 		{
 			//	Push text over to accommodate icon.

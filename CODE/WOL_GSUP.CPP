@@ -23,6 +23,7 @@
 #include "function.h"
 #include "IconList.h"
 #include <time.h>
+#include <string.h>
 #include "WolStrng.h"
 #include "wsproto.h"
 #include "BigCheck.h"
@@ -3469,8 +3470,6 @@ void WOL_GameSetupDialog::TriggerGameStart( char* szGoMessage )
 	*szTriggerGameStartInfo = 0;	//	This was set in order to trigger my coming here.
 }
 
-#endif
-
 //***********************************************************************************************
 bool bSpecialAftermathScenario( const char* szScenarioDescription )
 {
@@ -3498,3 +3497,5 @@ int ScenarioIndex_From_Filename( const char* szScenarioFilename )
 	}
 	return -1;
 }
+
+#endif

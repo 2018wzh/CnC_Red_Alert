@@ -854,6 +854,7 @@ void Send_Statistics_Packet(void)
 		PacketLater = NULL;
 	}
 
+#ifdef WOLAPI_INTEGRATION
 	/*
 	** Send it.....
 	*/
@@ -876,6 +877,7 @@ void Send_Statistics_Packet(void)
 			//debugprint( "RequestGameresSend( %s, %i ) failed!!!\n", szGameResServer, iPort );
 			;
 	}
+#endif
 
 	/*
 	** Save it to disk as well so I can see it

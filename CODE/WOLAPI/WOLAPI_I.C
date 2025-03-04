@@ -30,28 +30,15 @@
     error checks: none
 */
 //@@MIDL_FILE_HEADING(  )
+
+#ifndef __LPGUID_DEFINED__
+#include <windows.h>
+#endif // __IID_DEFINED__
+
 #ifdef __cplusplus
 extern "C"{
 #endif 
 
-
-#ifndef __IID_DEFINED__
-#define __IID_DEFINED__
-
-typedef struct _IID
-{
-    unsigned long x;
-    unsigned short s1;
-    unsigned short s2;
-    unsigned char  c[8];
-} IID;
-
-#endif // __IID_DEFINED__
-
-#ifndef CLSID_DEFINED
-#define CLSID_DEFINED
-typedef IID CLSID;
-#endif // CLSID_DEFINED
 
 const IID IID_IRTPatcher = {0x925CDEDE,0x71B9,0x11D1,{0xB1,0xC5,0x00,0x60,0x97,0x17,0x65,0x56}};
 

@@ -25,7 +25,8 @@
 
 #include "IconList.h"
 #include "WolapiOb.h"
-#include "PassEdit.h"
+//#include "PassEdit.h"
+#include "WolEdit.h"
 #include "WolStrng.h"
 #include "BigCheck.h"
 
@@ -165,7 +166,8 @@ int WOL_Login_Dialog( WolapiObject* pWO )
 	WOLEditClass NameEdit( EDITBOX_NAME, szNameBuffer, sizeof(szNameBuffer), TPF_6PT_GRAD|TPF_NOSHADOW, 
 							d_name_x, d_name_y, d_name_w, -1, EditClass::ALPHANUMERIC );
 
-	PassEditClass PassEdit( EDITBOX_PASS, szPassBuffer, sizeof(szPassBuffer), TPF_6PT_GRAD|TPF_NOSHADOW, 
+	// mango - passedit.h doesn't exist, so just use WOLEditClass for now
+	WOLEditClass PassEdit( EDITBOX_PASS, szPassBuffer, sizeof(szPassBuffer), TPF_6PT_GRAD|TPF_NOSHADOW, 
 							d_pass_x, d_pass_y, d_pass_w, -1, EditClass::ALPHANUMERIC );
 
 	//	Just making sure globals are set right before String_Pixel_Width() call... sigh
@@ -184,7 +186,7 @@ int WOL_Login_Dialog( WolapiObject* pWO )
 	//	Get saved nickname/passwords from the registry.
 	if( ReadSavedNicks( pWO, NickList, szNameBuffer, szPassBuffer ) )
 	{
-		PassEdit.bClearOnNextSetFocus = true;
+		//PassEdit.bClearOnNextSetFocus = true;
 	}
 	else
 	{
@@ -407,10 +409,10 @@ int WOL_Login_Dialog( WolapiObject* pWO )
 				}
 				
 				//	RequestConnection()...
-				HRESULT hRes = pWO->AttemptLogin( szNameBuffer, szPassBuffer, PassEdit.bClearOnNextSetFocus );
+				HRESULT hRes = pWO->AttemptLogin( szNameBuffer, szPassBuffer, false );//PassEdit.bClearOnNextSetFocus );
 				if( hRes == S_OK )
 				{
-					if( SaveCheckBox.IsOn && !bSaveNick( pWO, szNameBuffer, szPassBuffer, PassEdit.bClearOnNextSetFocus ) )
+					if( SaveCheckBox.IsOn && !bSaveNick( pWO, szNameBuffer, szPassBuffer, false ) )//PassEdit.bClearOnNextSetFocus ) )
 					{
 						//	Nick/pass save failed.
 						WWMessageBox().Process( TXT_WOL_CANTSAVENICK );
@@ -471,7 +473,7 @@ int WOL_Login_Dialog( WolapiObject* pWO )
 				//	Otherwise we could get a half-mangled, half-unmangled password field.
 				//	PassEdit.bClearOnNextSetFocus also acts as a flag telling us whether or not the
 				//	password field is mangled or not.
-				PassEdit.bClearOnNextSetFocus = true;
+				//PassEdit.bClearOnNextSetFocus = true;
 //				display = true;
 				break;
 

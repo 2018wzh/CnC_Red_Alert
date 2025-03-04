@@ -45,7 +45,6 @@
 #include "rgb.h"
 #include	"hsv.h"
 #include	"palette.h"
-#include	"video.h"
 #include	<string.h>
 
 extern "C" unsigned char CurrentPalette[];
@@ -53,6 +52,7 @@ static PaletteClass const & PaletteClass::CurrentPalette = *(PaletteClass *)&::C
 
 // mango - copied from EGOS.CPP
 #ifndef	WIN32
+#include	"video.h"
 extern void Vsync(void);
 #pragma aux Vsync modify [edx ebx eax] = \
 	"mov	edx,03DAh"				\

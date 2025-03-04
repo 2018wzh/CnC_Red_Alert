@@ -322,7 +322,8 @@ int Read_Game_Options(char *name)
 	//WWDebugString ("\n");
 
 	Session.Options.ScenarioIndex = -1;
-	for (int i = 0; i < Session.Scenarios.Count(); i++) {
+	int i = 0;
+	for (i = 0; i < Session.Scenarios.Count(); i++) {
 		if (!strcmp (Session.Scenarios[i]->Description(), Session.Options.ScenarioDescription) ){
 			Session.Options.ScenarioIndex = i;
 			break;
@@ -530,7 +531,7 @@ bool Is_User_WChat_Registered(char *buffer, int buffer_len)
 	}
 
 	RegCloseKey(key);
-	memcpy (buffer, user_handle, min(buffer_len, user_handle_size));
+	memcpy (buffer, user_handle, min<unsigned int>(buffer_len, user_handle_size));
 
 	/*
 	** If the first char of the users name is non-numeric then return success

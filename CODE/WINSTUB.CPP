@@ -160,9 +160,6 @@ void Check_For_Focus_Loss(void)
 }
 
 
-
-extern BOOL InMovie;
-
 long FAR PASCAL _export Windows_Procedure(HWND hwnd, UINT message, UINT wParam, LONG lParam)
 {
 
@@ -445,8 +442,8 @@ void Create_Main_Window ( HANDLE instance , int command_show , int width , int h
 	wndclass.lpfnWndProc   = Windows_Procedure ;
 	wndclass.cbClsExtra    = 0 ;
 	wndclass.cbWndExtra    = 0 ;
-	wndclass.hInstance     = instance ;
-	wndclass.hIcon         = LoadIcon (instance, MAKEINTRESOURCE(CC_ICON)) ;
+	wndclass.hInstance     = (HINSTANCE)instance ;
+	wndclass.hIcon         = LoadIcon ((HINSTANCE)instance, MAKEINTRESOURCE(CC_ICON)) ;
 	wndclass.hCursor       = NULL;
 	wndclass.hbrBackground = NULL;
 	wndclass.lpszMenuName  = WINDOW_NAME;	//NULL
@@ -472,7 +469,7 @@ void Create_Main_Window ( HANDLE instance , int command_show , int width , int h
 							// End Denzil
 							NULL,
 							NULL,
-							instance,
+							(HINSTANCE)instance,
 							NULL );
 // Denzil
 width = width; height = height;
@@ -510,7 +507,7 @@ void Window_Dialog_Box(HANDLE  hinst, LPCTSTR  lpszTemplate, HWND  hwndOwner, DL
 	** until the dialog box is closed.
 	*/
 
-	DialogBox(hinst, lpszTemplate, hwndOwner, dlgprc);
+	DialogBox((HINSTANCE)hinst, lpszTemplate, hwndOwner, dlgprc);
 	while (GetMessage(&msg, NULL, 0, 0) && !AllDone) {
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);

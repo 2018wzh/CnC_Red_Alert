@@ -284,9 +284,9 @@ void Increase_Palette_Luminance (unsigned char * palette , int red_percentage , 
 		green	+= green*green_percentage/100;
 		blue	+= blue*blue_percentage/100;
 
-		red 	= MIN (cap, red);
-		green	= MIN (cap, green);
-		blue	= MIN (cap, blue);
+		red 	= MIN<unsigned int> (cap, red);
+		green	= MIN<unsigned int> (cap, green);
+		blue	= MIN<unsigned int> (cap, blue);
 
 		*(palette+i)	=(unsigned char)red;
 		*(palette+i+1)	=(unsigned char)green;

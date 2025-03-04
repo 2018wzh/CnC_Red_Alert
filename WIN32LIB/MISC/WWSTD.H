@@ -121,8 +121,6 @@ template<class T> T ABS(T a)
 {
 	return (a < 0) ? -a : a;
 }
-int ABS(int);
-long ABS(long);
 
 // Returns the minimum of the two numbers.
 #ifdef MIN
@@ -132,9 +130,6 @@ template<class T> T MIN(T a, T b)
 {
 	return (b < a) ? b : a;
 };
-short MIN(short, short);
-int MIN(int, int);
-long MIN(long, long);
 
 // Returns the maximum of the two numbers.
 #ifdef MAX
@@ -144,9 +139,6 @@ template<class T> T MAX(T a, T b)
 {
 	return (b > a) ? b : a;
 };
-short MAX(short, short);
-int MAX(int, int);
-long MAX(long, long);
 #pragma option -Jgd
 
 // Returns the low word of a long

@@ -106,7 +106,7 @@ int				StampYDir;                  //
 
 int				ScreenWidth=MODE_WIDTH;
 
-BOOL			GameInFocus = TRUE;
+bool			GameInFocus = TRUE;
 
 extern "C"{
 char	CurrentPalette	[768];

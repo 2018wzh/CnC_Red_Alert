@@ -2127,7 +2127,7 @@ long Sample_Length(void const *sample)
  * HISTORY:                                                                                    *
  *    2/1/96 12:28PM ST : Created                                                              *
  *=============================================================================================*/
-extern BOOL GameInFocus;
+extern bool GameInFocus;
 BOOL Start_Primary_Sound_Buffer (BOOL forced)
 {
 	DWORD status;

@@ -64,7 +64,7 @@ extern void VQA_Test( char *filename );
 GraphicBufferClass *Screen_Buffer = NULL;
 int						ScreenWidth = VIDEO_MODE_WIDTH;
 
-BOOL	GameInFocus = TRUE;
+bool	GameInFocus = TRUE;
 void Block_Mouse(GraphicBufferClass*){}
 void Unblock_Mouse(GraphicBufferClass*){}
 

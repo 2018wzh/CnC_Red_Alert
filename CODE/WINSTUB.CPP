@@ -894,7 +894,7 @@ GraphicBufferClass* Read_PCX_File(char* name, char* palette, void *Buff, long Si
 	if (Buff) {
     	buffer = (char *)Buff;
     	i = Size / width;
-    	height = MIN (i - 1, height);
+    	height = MIN<int>(i - 1, height);
     	pic = new GraphicBufferClass(width, height, buffer, Size);
     	if ( !(pic && pic->Get_Buffer()) ) return NULL ;
 	} else {

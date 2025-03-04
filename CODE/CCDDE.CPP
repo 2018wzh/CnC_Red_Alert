@@ -64,14 +64,14 @@ DDEServerClass	DDEServer;				//Instance of the DDE Server class
 Instance_Class	*DDE_Class = NULL;	// pointer for client callback
 												// this *must* be called DDE_Class
 
-BOOL RA95AlreadyRunning = FALSE;		//Was there an instance of Red Alert 95 already running when we started?
+bool RA95AlreadyRunning = FALSE;		//Was there an instance of Red Alert 95 already running when we started?
 
 /*
 ** Misc externs so we dont have to include FUNCTION.H
 */
 extern HWND 			MainWindow;
 extern TimerClass	GameTimer;
-extern BOOL			GameTimerInUse;
+extern bool			GameTimerInUse;
 extern void 			WWDebugString (char *string);
 
 

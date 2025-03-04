@@ -3,20 +3,9 @@
 
 This repository includes source code for Command & Conquer Red Alert. This release provides support to the [Steam Workshop](https://steamcommunity.com/workshop/browse/?appid=2229840) for the game.
 
-
-## Dependencies
-
-If you wish to rebuild the source code and tools successfully you will need to find or write new replacements (or remove the code using them entirely) for the following libraries;
-
-- DirectX 5 SDK
-- DirectX Media 5.1 SDK
-- Greenleaf Communications Library (GCL)
-- Human Machine Interface (HMI) “Sound Operating System” (SOS)
-
-
 ## Compiling
 
-The current state of the source code does not fully compile and will require some effort to restore it. If you wish to restore the original build environment, the following tools are required;
+The following tools are required:
 
 - OpenWatcom C/C++ (v2.0) for C/C++ source files
 - Borland Turbo Assembler (TASM v4.0) for assembly files
@@ -76,8 +65,6 @@ To play, simply put the executable in the game directory and launch!
 
 ## Compiling - Windows version
 
-NOTE: windows currently doesn't build.
-
 Run the the following commands:
 
 ```
@@ -96,6 +83,13 @@ Run the the following commands:
 	cd ..\code
 	wmake WIN32=1
 ```
+
+Assuming compilation is successful, you should have a `RA95.EXE` in the `RUN` folder.
+
+To play, simply put the executable in the game directory and launch!
+
+
+## Notes
 
 Please note that to keep things simple, the current focus of this repository it to build the DOS version in the current version of OpenWatcom, which requires a few changes as the modern compiler is slightly more strict in places. Also the codebase seems to require a lot of manual tweaking to get the correct build state (such as the CD DOS version not building with the expansion pack changes).
 

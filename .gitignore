@@ -12,6 +12,5 @@ watcom/
 *.MAP
 *.LBC
 *.LST
-*.RSP
 *.IBN
 WWFLAT32/SRCDEBUG

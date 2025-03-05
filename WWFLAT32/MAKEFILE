@@ -88,7 +88,6 @@ LIBS = 			&
 	palette.lib 	&
 	playcd.lib  	&
 	shape.lib   	&
-	sosdw1ps.lib	&
 	svgaprim.lib	&
 	tile.lib 	&
 	timer.lib 	&

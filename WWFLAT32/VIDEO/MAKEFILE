@@ -185,6 +185,8 @@ vesareal.obj:	vesareal.asm
 timera.obj: vesareal.asm vesareal.ibn
 	$(ASM_CMD) $(ASM_CFG) $[@
 
+vesahook.obj: vesahook.asm vesareal.ibn
+	$(ASM_CMD) $(ASM_CFG) $[@
 
 #---------------------------------------------------------------------------
 # Create the test directory and make it.

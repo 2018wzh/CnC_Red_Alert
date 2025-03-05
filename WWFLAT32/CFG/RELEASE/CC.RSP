@@ -1,9 +1,12 @@
-/bt=nt
+/bt=dos
 /W3
 /d1
 /oxtan
+/fh
+/zp1
+/5s
+/of+
 /s
-/4
 /j
 /DTRUE_FALSE_DEFINED=1
 /D__STDC_VERSION__=199901L

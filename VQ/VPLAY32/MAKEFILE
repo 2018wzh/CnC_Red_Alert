@@ -59,6 +59,8 @@
 PRJNAME = VPLAY4GW
 PRJDIR  = $(%PRJ)\VPLAY32
 
+BUILD_TYPE=DEBUG
+
 OBJECTS = &
 	plyvqa32.obj
 
@@ -117,13 +119,11 @@ ASM_CMD  = tasm
 LINK_CMD = wlink
 LIB_CMD  = wlib
 
-CC_OPTS  = @$(%PRJ)\CFG\RELEASE\CC.RSP -i$(%PRJ) 
-ASM_OPTS = @$(%PRJ)\CFG\RELEASE\ASM.RSP /i$(%PRJ) 
-
 # WAS: -j -zp1 -5s -mf -oaeilrt -s -zq -d2
-CC_OPTS  = @$(%PRJ)\CFG\RELEASE\CC.RSP -i$(INCLUDEPATH)
+CC_OPTS  = @$(%PRJ)\CFG\$(BUILD_TYPE)\CC.RSP -i$(INCLUDEPATH)
 # WAS: /t /m /w+ /jJUMPS /ml /p /z /dPHARLAP_TNT=0
-ASM_OPTS = @$(%PRJ)\CFG\RELEASE\ASM.RSP
+ASM_OPTS = @$(%PRJ)\CFG\$(BUILD_TYPE)\ASM.RSP
+
 LIB_OPTS = /b /c /q /t
 LINK_CFG = $(PRJNAME).lnk
 

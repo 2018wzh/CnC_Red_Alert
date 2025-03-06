@@ -68,6 +68,8 @@ LIB=wlib
 WWVQ=..\vq
 !endif
 
+BUILD_TYPE=DEBUG
+
 #---------------------------------------------------------------------------
 # Path macros: one path for each file type.
 #  These paths are used to tell make where to find/put each file type.
@@ -85,12 +87,12 @@ WWVQ=..\vq
 # Compiler and assembler flags.
 #===========================================================================
 !ifdef WIN32
-CC_CFG = @CFGW32\RELEASE\CC.RSP
+CC_CFG = @CFGW32\$(BUILD_TYPE)\CC.RSP
 CC_CFG += /D$(LANGUAGE)=1
-ASM_CFG = @CFGW32\RELEASE\ASM.RSP
+ASM_CFG = @CFGW32\$(BUILD_TYPE)\ASM.RSP
 !else
-CC_CFG = @CFG\RELEASE\CC.RSP
-ASM_CFG = @CFG\RELEASE\ASM.RSP
+CC_CFG = @CFG\$(BUILD_TYPE)\CC.RSP
+ASM_CFG = @CFG\$(BUILD_TYPE)\ASM.RSP
 !endif
 
 CC_CFG += /i=$(WWVQ)                      # ...

@@ -64,6 +64,8 @@ PRJDIR  = $(%PRJ)\VQM32
 
 PRJINCLUDE = ..\
 
+BUILD_TYPE=DEBUG
+
 OBJECTS = &
 	iff.obj &
 	profile.obj &
@@ -149,8 +151,9 @@ ASM_CMD  = tasm
 LINK_CMD = wlink
 LIB_CMD  = wlib
 
-CC_OPTS  = -i$(INCLUDEPATH) -j -zp1 -5s -mf -oaeilrt -s -zq
-ASM_OPTS = /t /m /w+ /jJUMPS /ml /p /z /dPHARLAP_TNT=0
+CC_OPTS  = @$(%PRJ)\CFG\$(BUILD_TYPE)\CC.RSP -i$(INCLUDEPATH)
+ASM_OPTS = @$(%PRJ)\CFG\$(BUILD_TYPE)\ASM.RSP 
+
 LIB_OPTS = /b /c /q
 LINK_CFG = $(PRJNAME).lnk
 

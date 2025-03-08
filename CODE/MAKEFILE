@@ -68,7 +68,7 @@ LIB=wlib
 WWVQ=..\vq
 !endif
 
-BUILD_TYPE=DEBUG
+BUILD_TYPE=RELEASE
 
 #---------------------------------------------------------------------------
 # Path macros: one path for each file type.

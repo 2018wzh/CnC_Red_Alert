@@ -15,3 +15,4 @@ watcom/
 *.IBN
 WWFLAT32/SRCDEBUG
 BIN/
+.vscode/*
